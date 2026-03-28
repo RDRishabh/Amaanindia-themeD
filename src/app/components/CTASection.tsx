@@ -2,10 +2,12 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { ArrowRight, Phone } from "lucide-react";
+import { getThemeColors } from "../../styles/themes";
 
 export function CTASection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const c = getThemeColors();
 
   return (
     <section className="relative py-32 overflow-hidden">
@@ -16,7 +18,12 @@ export function CTASection() {
           alt="CTA Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/85 to-[#0a0a0a]/60" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to right, ${c.ctaOverlayStart}, ${c.ctaOverlayMid}, ${c.ctaOverlayEnd})`,
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
@@ -28,27 +35,27 @@ export function CTASection() {
             transition={{ duration: 0.9 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-10 bg-[#C9A84C]" />
+              <div className="h-px w-10" style={{ background: c.accent }} />
               <span
-                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em" }}
-                className="text-[#C9A84C] uppercase"
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
+                className="uppercase"
               >
                 Take The Next Step
               </span>
             </div>
 
             <h2
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.1 }}
-              className="text-white text-4xl md:text-6xl mb-6"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.1, color: c.textPrimary }}
+              className="text-4xl md:text-6xl mb-6"
             >
               Make the Right
-              <span className="block italic text-[#C9A84C]">Property Decision</span>
-              <span className="block text-white/80">with Expert Guidance</span>
+              <span className="block italic" style={{ color: c.accent }}>Property Decision</span>
+              <span className="block" style={{ color: c.textSecondary }}>with Expert Guidance</span>
             </h2>
 
             <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8 }}
-              className="text-white/65 mb-12 max-w-lg"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: c.textSecondary }}
+              className="mb-12 max-w-lg"
             >
               Whether you're a salaried professional buying your first home, a seasoned real estate investor, or a commercial buyer — our expert advisors are ready to guide you every step of the way.
             </p>
@@ -58,7 +65,8 @@ export function CTASection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => { const el = document.querySelector("#contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
-                className="flex items-center gap-3 bg-[#C9A84C] hover:bg-[#B8963E] text-[#0a0a0a] px-8 py-5 transition-all duration-300 group shadow-[0_0_40px_rgba(201,168,76,0.3)]"
+                className="flex items-center gap-3 px-8 py-5 transition-all duration-300 group"
+                style={{ background: c.accent, color: c.onAccent }}
               >
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em" }} className="uppercase">
                   Get Expert Property Advice
@@ -68,7 +76,18 @@ export function CTASection() {
 
               <a
                 href="tel:9540005050"
-                className="flex items-center gap-3 border border-white/30 hover:border-[#C9A84C] text-white hover:text-[#C9A84C] px-8 py-5 transition-all duration-400 backdrop-blur-sm group"
+                className="flex items-center gap-3 px-8 py-5 transition-all duration-400 backdrop-blur-sm group"
+                style={{ border: `1px solid rgba(255,255,255,0.30)`, color: "rgba(255,255,255,0.9)" }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = c.accent;
+                  el.style.color = c.accent;
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(255,255,255,0.30)";
+                  el.style.color = "rgba(255,255,255,0.9)";
+                }}
               >
                 <Phone size={16} />
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.85rem", letterSpacing: "0.05em" }}>
@@ -85,7 +104,8 @@ export function CTASection() {
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 1.2, delay: 0.5 }}
-        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C9A84C] via-[#F0D080] to-transparent origin-left"
+        className="absolute bottom-0 left-0 right-0 h-[2px] origin-left"
+        style={{ background: `linear-gradient(to right, ${c.accent}, ${c.accentLight}, transparent)` }}
       />
     </section>
   );
