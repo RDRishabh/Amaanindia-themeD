@@ -11,8 +11,8 @@ html {
 }
 
 ::selection {
-  background-color: #C9A84C;
-  color: #0a0a0a;
+  background-color: var(--t-selection-bg);
+  color: var(--t-selection-text);
 }
 
 ::-webkit-scrollbar {
@@ -20,14 +20,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--t-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A84C;
+  background: var(--t-scrollbar-thumb);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8963E;
+  background: var(--t-accent-hover);
 }
