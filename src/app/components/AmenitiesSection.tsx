@@ -5,6 +5,8 @@ import {
   Dumbbell, Shield, Car, Trees, Waves, Wifi,
   Coffee, Zap, Baby, Heart, Camera, Wind
 } from "lucide-react";
+import { getThemeColors } from "../../styles/themes";
+const c = getThemeColors();
 
 const amenities = [
   { icon: Dumbbell, label: "World-Class Gym" },
@@ -26,10 +28,10 @@ export function AmenitiesSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-28 bg-[#0a0a0a] relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden" style={{ background: c.sectionDark }}>
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#C9A84C]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none" style={{ background: c.glowColor }} />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl pointer-events-none" style={{ background: c.glowColor }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
@@ -41,24 +43,24 @@ export function AmenitiesSection() {
           className="text-center mb-20"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
             <span
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em" }}
-              className="text-[#C9A84C] uppercase"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
+              className="uppercase"
             >
               World-Class Facilities
             </span>
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15 }}
-            className="text-white text-4xl md:text-5xl"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            className="text-4xl md:text-5xl"
           >
-            Premium <span className="italic text-[#C9A84C]">Amenities</span>
+            Premium <span className="italic" style={{ color: c.accent }}>Amenities</span>
           </h2>
           <p
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.8 }}
-            className="text-white/50 mt-4 max-w-xl mx-auto"
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.8, color: c.textSecondary }}
+            className="mt-4 max-w-xl mx-auto"
           >
             Every Amaan India property comes with thoughtfully curated amenities designed for luxury living.
           </p>
@@ -72,14 +74,24 @@ export function AmenitiesSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group flex flex-col items-center gap-4 p-6 border border-[#1e1e1e] hover:border-[#C9A84C] bg-[#111111] hover:bg-[#0f0f0f] transition-all duration-400 cursor-pointer"
+              className="group flex flex-col items-center gap-4 p-6 transition-all duration-400 cursor-pointer"
+              style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
+              onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.borderColor = c.accent}
+              onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.borderColor = c.borderSubtle}
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#1a1a1a] group-hover:bg-[#C9A84C] transition-colors duration-400">
-                <amenity.icon size={20} className="text-[#C9A84C] group-hover:text-[#0a0a0a] transition-colors duration-400" />
+              <div
+                className="w-12 h-12 flex items-center justify-center rounded-full transition-colors duration-400 group-hover:bg-[var(--t-accent)]"
+                style={{ background: c.cardBgSubtle }}
+              >
+                <amenity.icon
+                  size={20}
+                  className="transition-colors duration-400 group-hover:text-[var(--t-on-accent)]"
+                  style={{ color: c.accent }}
+                />
               </div>
               <span
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.78rem", lineHeight: 1.3, textAlign: "center" }}
-                className="text-white/60 group-hover:text-white transition-colors duration-400"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.78rem", lineHeight: 1.3, textAlign: "center", color: c.textSecondary }}
+                className="transition-colors duration-400 group-hover:text-[var(--t-text-primary)]"
               >
                 {amenity.label}
               </span>
