@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowDown, Building2, Users, Award, TrendingUp, MapPin, Play } from "lucide-react";
 import gsap from "gsap";
+import { getThemeColors } from "../../styles/themes";
+const c = getThemeColors();
 
 const slides = [
   {
@@ -58,7 +60,7 @@ function OrbDecoration() {
         className="absolute inset-0 rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%)",
+            `radial-gradient(ellipse at center, rgba(${c.accentRgb},0.12) 0%, transparent 70%)`,
           filter: "blur(30px)",
         }}
       />
@@ -74,9 +76,9 @@ function OrbDecoration() {
             width: 340,
             height: 340,
             borderRadius: "50%",
-            border: "1px solid rgba(201,168,76,0.55)",
+            border: `1px solid rgba(${c.accentRgb},0.55)`,
             transform: "rotateX(74deg)",
-            boxShadow: "0 0 18px rgba(201,168,76,0.15)",
+            boxShadow: `0 0 18px rgba(${c.accentRgb},0.15)`,
           }}
         />
       </div>
@@ -92,7 +94,7 @@ function OrbDecoration() {
             width: 250,
             height: 250,
             borderRadius: "50%",
-            border: "1px solid rgba(201,168,76,0.38)",
+            border: `1px solid rgba(${c.accentRgb},0.38)`,
             transform: "rotateX(62deg) rotateZ(38deg)",
           }}
         />
@@ -109,7 +111,7 @@ function OrbDecoration() {
             width: 168,
             height: 168,
             borderRadius: "50%",
-            border: "1px solid rgba(201,168,76,0.28)",
+            border: `1px solid rgba(${c.accentRgb},0.28)`,
             transform: "rotateX(55deg) rotateZ(-55deg)",
           }}
         />
@@ -124,8 +126,8 @@ function OrbDecoration() {
         {dots.map((d, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-[#C9A84C]"
-            style={{ width: 4, height: 4, left: "50%", top: "50%", marginLeft: -2, marginTop: -2, x: d.x, y: d.y }}
+            className="absolute rounded-full"
+            style={{ width: 4, height: 4, left: "50%", top: "50%", marginLeft: -2, marginTop: -2, x: d.x, y: d.y, backgroundColor: c.accent }}
             animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.4, 0.8] }}
             transition={{ duration: 2.5, repeat: Infinity, delay: d.delay, ease: "easeInOut" }}
           />
@@ -139,11 +141,11 @@ function OrbDecoration() {
         style={{
           width: 44,
           height: 44,
-          border: "2px solid #C9A84C",
-          background: "rgba(201,168,76,0.1)",
+          border: `2px solid ${c.accent}`,
+          background: `rgba(${c.accentRgb},0.1)`,
           transform: "rotate(45deg)",
           position: "absolute",
-          boxShadow: "0 0 20px rgba(201,168,76,0.4), inset 0 0 10px rgba(201,168,76,0.15)",
+          boxShadow: `0 0 20px rgba(${c.accentRgb},0.4), inset 0 0 10px rgba(${c.accentRgb},0.15)`,
         }}
       />
 
@@ -155,7 +157,7 @@ function OrbDecoration() {
         style={{
           width: 80,
           height: 80,
-          background: "radial-gradient(circle, rgba(201,168,76,0.5) 0%, transparent 70%)",
+          background: `radial-gradient(circle, rgba(${c.accentRgb},0.5) 0%, transparent 70%)`,
           filter: "blur(8px)",
         }}
       />
@@ -171,7 +173,7 @@ function PropertyCard() {
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1.4, duration: 0.9, ease: "easeOut" }}
-      whileHover={{ y: -6, boxShadow: "0 30px 60px rgba(201,168,76,0.2)", transition: { type: "spring", stiffness: 240, damping: 22 } }}
+      whileHover={{ y: -6, boxShadow: `0 30px 60px rgba(${c.accentRgb},0.2)`, transition: { type: "spring", stiffness: 240, damping: 22 } }}
       style={{
         position: "absolute",
         bottom: -30,
@@ -179,19 +181,19 @@ function PropertyCard() {
         minWidth: 230,
         background: "rgba(8,8,8,0.82)",
         backdropFilter: "blur(22px)",
-        border: "1px solid rgba(201,168,76,0.35)",
+        border: `1px solid rgba(${c.accentRgb},0.35)`,
         borderRadius: 2,
       }}
     >
       <div style={{ padding: "18px 20px" }}>
         <div className="flex items-center gap-2 mb-3">
-          <Building2 size={12} className="text-[#C9A84C]" />
+          <Building2 size={12} style={{ color: c.accent }} />
           <span
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: "0.6rem",
               letterSpacing: "0.25em",
-              color: "#C9A84C",
+              color: c.accent,
               textTransform: "uppercase",
             }}
           >
@@ -216,7 +218,7 @@ function PropertyCard() {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.1rem", color: "#C9A84C" }}>
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.1rem", color: c.accent }}>
             ₹3.2 Cr+
           </span>
           <span
@@ -233,7 +235,7 @@ function PropertyCard() {
         </div>
         {/* progress bar */}
         <div className="mt-3 h-px bg-white/10">
-          <div className="h-full bg-[#C9A84C]" style={{ width: "72%" }} />
+          <div className="h-full" style={{ width: "72%", backgroundColor: c.accent }} />
         </div>
         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.6rem", color: "rgba(255,255,255,0.3)" }}>
           72% Sold
@@ -349,7 +351,7 @@ export function HeroSection() {
         transition={{ duration: 4, repeat: Infinity, repeatDelay: 6, ease: "easeInOut" }}
         style={{
           background:
-            "linear-gradient(135deg, transparent 30%, rgba(201,168,76,0.25) 50%, transparent 70%)",
+            `linear-gradient(135deg, transparent 30%, rgba(${c.accentRgb},0.25) 50%, transparent 70%)`,
         }}
       />
 
@@ -365,7 +367,7 @@ export function HeroSection() {
                 style={{
                   width: 36,
                   height: 1,
-                  background: "linear-gradient(to right, #C9A84C, transparent)",
+                  background: `linear-gradient(to right, ${c.accent}, transparent)`,
                 }}
               />
               <AnimatePresence mode="wait">
@@ -380,7 +382,7 @@ export function HeroSection() {
                     fontWeight: 500,
                     fontSize: "0.68rem",
                     letterSpacing: "0.32em",
-                    color: "#C9A84C",
+                    color: c.accent,
                     textTransform: "uppercase",
                   }}
                 >
@@ -394,11 +396,11 @@ export function HeroSection() {
                   gap: 6,
                   marginLeft: 8,
                   padding: "3px 10px",
-                  border: "1px solid rgba(201,168,76,0.25)",
+                  border: `1px solid rgba(${c.accentRgb},0.25)`,
                   borderRadius: 1,
                 }}
               >
-                <MapPin size={9} color="rgba(201,168,76,0.7)" />
+                <MapPin size={9} color={`rgba(${c.accentRgb},0.7)`} />
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={current}
@@ -410,7 +412,7 @@ export function HeroSection() {
                       fontFamily: "'Montserrat', sans-serif",
                       fontSize: "0.6rem",
                       letterSpacing: "0.15em",
-                      color: "rgba(201,168,76,0.65)",
+                      color: `rgba(${c.accentRgb},0.65)`,
                     }}
                   >
                     {slides[current].location}
@@ -423,7 +425,7 @@ export function HeroSection() {
             <div>
               {[
                 { text: "Make the Right", style: { color: "#fff", fontStyle: "normal" } },
-                { text: "Property Decision", style: { color: "#C9A84C", fontStyle: "italic" } },
+                { text: "Property Decision", style: { color: c.accent, fontStyle: "italic" } },
                 { text: "with Expert Guidance", style: { color: "rgba(255,255,255,0.88)", fontStyle: "normal" } },
               ].map((line, i) => (
                 <div key={i} className="hero-title-wrap overflow-hidden" style={{ lineHeight: 1 }}>
@@ -471,9 +473,9 @@ export function HeroSection() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  background: "linear-gradient(135deg, #C9A84C 0%, #E8C96A 50%, #C9A84C 100%)",
+                  background: `linear-gradient(135deg, ${c.accent} 0%, ${c.accentLight} 50%, ${c.accent} 100%)`,
                   backgroundSize: "200% 100%",
-                  color: "#080808",
+                  color: c.onAccent,
                   padding: "14px 28px",
                   border: "none",
                   cursor: "pointer",
@@ -483,7 +485,7 @@ export function HeroSection() {
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "100% 0";
-                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 40px rgba(201,168,76,0.55), 0 8px 24px rgba(0,0,0,0.4)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 0 40px rgba(${c.accentRgb},0.55), 0 8px 24px rgba(0,0,0,0.4)`;
                   (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
@@ -514,9 +516,9 @@ export function HeroSection() {
                   transition: "all 0.35s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = "#C9A84C";
-                  (e.currentTarget as HTMLButtonElement).style.color = "#C9A84C";
-                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(201,168,76,0.06)";
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = c.accent;
+                  (e.currentTarget as HTMLButtonElement).style.color = c.accent;
+                  (e.currentTarget as HTMLButtonElement).style.background = `rgba(${c.accentRgb},0.06)`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.28)";
@@ -548,13 +550,13 @@ export function HeroSection() {
               return (
                 <div key={stat.label} className="hero-stat flex flex-col">
                   <div className="flex items-center gap-1.5 mb-0.5">
-                    <Icon size={11} className="text-[#C9A84C] opacity-70" />
+                    <Icon size={11} style={{ color: c.accent, opacity: 0.7 }} />
                     <span
                       style={{
                         fontFamily: "'Cormorant Garamond', serif",
                         fontWeight: 700,
                         fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
-                        color: "#C9A84C",
+                        color: c.accent,
                         lineHeight: 1,
                       }}
                     >
@@ -591,11 +593,11 @@ export function HeroSection() {
                     width: i === current ? 28 : 7,
                     height: 7,
                     borderRadius: 4,
-                    background: i === current ? "#C9A84C" : "rgba(255,255,255,0.28)",
+                    background: i === current ? c.accent : "rgba(255,255,255,0.28)",
                     border: "none",
                     cursor: "pointer",
                     transition: "all 0.4s cubic-bezier(0.25,0.46,0.45,0.94)",
-                    boxShadow: i === current ? "0 0 8px rgba(201,168,76,0.5)" : "none",
+                    boxShadow: i === current ? `0 0 8px rgba(${c.accentRgb},0.5)` : "none",
                   }}
                 />
               ))}
@@ -626,11 +628,11 @@ export function HeroSection() {
                 style={{
                   width: 1,
                   height: 28,
-                  background: "linear-gradient(to bottom, rgba(201,168,76,0.7), transparent)",
+                  background: `linear-gradient(to bottom, rgba(${c.accentRgb},0.7), transparent)`,
                   borderRadius: 1,
                 }}
               />
-              <ArrowDown size={13} style={{ color: "rgba(201,168,76,0.65)" }} />
+              <ArrowDown size={13} style={{ color: `rgba(${c.accentRgb},0.65)` }} />
             </motion.button>
           </div>
         </div>
