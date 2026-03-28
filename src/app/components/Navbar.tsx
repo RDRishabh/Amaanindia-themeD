@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Menu, X, ChevronRight } from "lucide-react";
 import logoImg from "../../assets/logo.png";
+import { getThemeColors } from "../../styles/themes";
+
+const c = getThemeColors();
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -35,12 +38,12 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-[#060606]/96 backdrop-blur-xl shadow-[0_1px_0_rgba(201,168,76,0.15),0_8px_40px_rgba(0,0,0,0.6)]"
-            : "bg-transparent"
-        }`}
-        style={{ padding: scrolled ? "10px 0" : "18px 0" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "backdrop-blur-xl" : ""}`}
+        style={{
+          padding: scrolled ? "10px 0" : "18px 0",
+          background: scrolled ? c.navScrolledBg : "transparent",
+          boxShadow: scrolled ? c.navShadow : "none",
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
           {/* ── Logo ── */}
@@ -61,10 +64,9 @@ export function Navbar() {
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  filter: "brightness(0) invert(1)",
+                  filter: c.logoFilter,
                   transition: "filter 0.3s",
                 }}
-                className="group-hover:[filter:brightness(0)_sepia(1)_saturate(4)_hue-rotate(5deg)]"
               />
             </motion.div>
             <div className="flex flex-col leading-none gap-0.5">
@@ -78,7 +80,7 @@ export function Navbar() {
                   lineHeight: 1,
                   transition: "color 0.3s",
                 }}
-                className="group-hover:text-[#C9A84C]"
+                className="group-hover:text-[var(--t-accent)]"
               >
                 AMAAN
               </span>
@@ -88,7 +90,7 @@ export function Navbar() {
                   fontWeight: 400,
                   fontSize: "0.52rem",
                   letterSpacing: "0.28em",
-                  color: "#C9A84C",
+                  color: c.accent,
                   textTransform: "uppercase",
                   lineHeight: 1,
                 }}
@@ -115,11 +117,11 @@ export function Navbar() {
                   cursor: "pointer",
                   position: "relative",
                   padding: "4px 0",
-                  color: activeLink === link.href ? "#C9A84C" : "rgba(255,255,255,0.75)",
+                  color: activeLink === link.href ? c.accent : c.textSecondary,
                   transition: "color 0.3s",
                 }}
-                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
-                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.75)"; }}
+                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = c.textPrimary; }}
+                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = c.textSecondary; }}
               >
                 {link.label}
                 {/* underline indicator */}
@@ -130,7 +132,7 @@ export function Navbar() {
                     left: 0,
                     width: activeLink === link.href ? "100%" : "0%",
                     height: 1,
-                    background: "linear-gradient(to right, #C9A84C, rgba(201,168,76,0.3))",
+                    background: `linear-gradient(to right, ${c.accent}, rgba(${c.accentRgb},0.3))`,
                     transition: "width 0.35s ease",
                   }}
                 />
@@ -149,34 +151,34 @@ export function Navbar() {
                 style={{
                   width: 28,
                   height: 28,
-                  border: "1px solid rgba(201,168,76,0.4)",
+                  border: `1px solid rgba(${c.accentRgb},0.4)`,
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "all 0.3s",
                 }}
-                className="group-hover:border-[#C9A84C] group-hover:bg-[rgba(201,168,76,0.1)]"
+                className="group-hover:border-[var(--t-accent)] group-hover:bg-[var(--t-card-bg-subtle)]"
               >
-                <Phone size={12} style={{ color: "#C9A84C" }} />
+                <Phone size={12} style={{ color: c.accent }} />
               </div>
               <span
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 500,
                   fontSize: "0.76rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: c.textSecondary,
                   transition: "color 0.3s",
                   letterSpacing: "0.04em",
                 }}
-                className="group-hover:text-[#C9A84C]"
+                className="group-hover:text-[var(--t-accent)]"
               >
                 9540005050
               </span>
             </a>
 
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: "0 0 28px rgba(201,168,76,0.45)" }}
+              whileHover={{ scale: 1.02, boxShadow: `0 0 28px rgba(${c.accentRgb},0.45)` }}
               whileTap={{ scale: 0.97 }}
               onClick={() => handleNav("#contact")}
               style={{
@@ -185,8 +187,8 @@ export function Navbar() {
                 fontSize: "0.68rem",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                background: "linear-gradient(135deg, #C9A84C, #E8C96A)",
-                color: "#080808",
+                background: `linear-gradient(135deg, ${c.accent}, ${c.accentLight})`,
+                color: c.onAccent,
                 padding: "10px 22px",
                 border: "none",
                 cursor: "pointer",
@@ -227,7 +229,7 @@ export function Navbar() {
           transition={{ duration: 0.5 }}
           style={{
             height: 1,
-            background: "linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent)",
+            background: `linear-gradient(to right, transparent, rgba(${c.accentRgb},0.4), transparent)`,
             transformOrigin: "left",
           }}
         />
@@ -242,7 +244,7 @@ export function Navbar() {
             exit={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center"
-            style={{ background: "rgba(4,4,4,0.97)", backdropFilter: "blur(20px)" }}
+            style={{ background: c.mobileMenuBg, backdropFilter: "blur(20px)" }}
           >
             {/* Diamond logo centered */}
             <motion.div
@@ -259,7 +261,7 @@ export function Navbar() {
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  filter: "brightness(0) invert(1)",
+                  filter: c.logoFilter,
                 }}
               />
             </motion.div>
@@ -277,13 +279,13 @@ export function Navbar() {
                     fontWeight: 600,
                     fontSize: "2.2rem",
                     letterSpacing: "0.04em",
-                    color: "rgba(255,255,255,0.85)",
+                    color: c.textPrimary,
                     background: "none",
                     border: "none",
                     cursor: "pointer",
                     transition: "color 0.3s",
                   }}
-                  whileHover={{ color: "#C9A84C", x: 8 }}
+                  whileHover={{ color: c.accent, x: 8 }}
                 >
                   {link.label}
                 </motion.button>
@@ -301,7 +303,7 @@ export function Navbar() {
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "0.8rem",
                     letterSpacing: "0.1em",
-                    color: "#C9A84C",
+                    color: c.accent,
                     display: "flex",
                     alignItems: "center",
                     gap: 8,
@@ -319,8 +321,8 @@ export function Navbar() {
                     fontSize: "0.75rem",
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
-                    background: "linear-gradient(135deg, #C9A84C, #E8C96A)",
-                    color: "#080808",
+                    background: `linear-gradient(135deg, ${c.accent}, ${c.accentLight})`,
+                    color: c.onAccent,
                     padding: "13px 32px",
                     border: "none",
                     cursor: "pointer",
