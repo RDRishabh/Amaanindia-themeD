@@ -45,7 +45,7 @@ export interface ThemeTokens {
   glowColor: string;       // for orb glow, blur decorations
 
   // Testimonials
-  avatarColors: [string, string, string];
+  avatarColors: readonly [string, string, string];
 
   // Contact map iframe CSS filter
   mapFilter: string;
@@ -53,6 +53,12 @@ export interface ThemeTokens {
   // Scrollbar
   scrollbarTrack: string;
   scrollbarThumb: string;
+
+  // Selection highlight
+  selectionBg: string;
+  selectionText: string;
+  // Logo filter (for navbar logo visibility on different bg colors)
+  logoFilter: string;
 }
 
 const themes: Record<ThemeKey, ThemeTokens> = {
@@ -98,6 +104,10 @@ const themes: Record<ThemeKey, ThemeTokens> = {
 
     scrollbarTrack: '#F2EFE9',
     scrollbarThumb: '#1B2D4F',
+
+    selectionBg: '#1B2D4F',
+    selectionText: '#FFFFFF',
+    logoFilter: 'none',
   },
 
   // ── Theme B: Dark Refined (Apple Pro / Bang & Olufsen) ────────────────
@@ -142,6 +152,10 @@ const themes: Record<ThemeKey, ThemeTokens> = {
 
     scrollbarTrack: '#0C0C0E',
     scrollbarThumb: '#C0C4D0',
+
+    selectionBg: '#C0C4D0',
+    selectionText: '#0C0C0E',
+    logoFilter: 'brightness(0) invert(1)',
   },
 
   // ── Theme C: Warm Neutral (Luxury Scandinavian / Aesop) ──────────────
@@ -186,6 +200,10 @@ const themes: Record<ThemeKey, ThemeTokens> = {
 
     scrollbarTrack: '#EDE8DE',
     scrollbarThumb: '#4A6741',
+
+    selectionBg: '#4A6741',
+    selectionText: '#FFFFFF',
+    logoFilter: 'none',
   },
 };
 
@@ -204,6 +222,11 @@ export function getThemeCssVars(): Record<string, string> {
     '--t-section-mid': c.sectionMid,
     '--t-section-light': c.sectionLight,
     '--t-section-white': c.sectionWhite,
+    '--t-accent-light': c.accentLight,
+    '--t-nav-scrolled-bg': c.navScrolledBg,
+    '--t-nav-shadow': c.navShadow,
+    '--t-mobile-menu-bg': c.mobileMenuBg,
+    '--t-glow-color': c.glowColor,
     '--t-card-bg': c.cardBg,
     '--t-card-bg-subtle': c.cardBgSubtle,
     '--t-input-bg': c.inputBg,
@@ -214,5 +237,7 @@ export function getThemeCssVars(): Record<string, string> {
     '--t-border-subtle': c.borderSubtle,
     '--t-scrollbar-track': c.scrollbarTrack,
     '--t-scrollbar-thumb': c.scrollbarThumb,
+    '--t-selection-bg': c.selectionBg,
+    '--t-selection-text': c.selectionText,
   };
 }
