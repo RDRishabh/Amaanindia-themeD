@@ -1,0 +1,339 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Phone, Menu, X, ChevronRight } from "lucide-react";
+import logoImg from "../../assets/logo.png";
+
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Contact", href: "#contact" },
+];
+
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("#home");
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNav = (href: string) => {
+    setMobileOpen(false);
+    setActiveLink(href);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#060606]/96 backdrop-blur-xl shadow-[0_1px_0_rgba(201,168,76,0.15),0_8px_40px_rgba(0,0,0,0.6)]"
+            : "bg-transparent"
+        }`}
+        style={{ padding: scrolled ? "10px 0" : "18px 0" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+          {/* ── Logo ── */}
+          <button
+            onClick={() => handleNav("#home")}
+            className="flex items-center gap-3 group"
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.06 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              style={{ width: 44, height: 44, flexShrink: 0 }}
+            >
+              <img
+                src={logoImg}
+                alt="Amaan India Logo"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  filter: "brightness(0) invert(1)",
+                  transition: "filter 0.3s",
+                }}
+                className="group-hover:[filter:brightness(0)_sepia(1)_saturate(4)_hue-rotate(5deg)]"
+              />
+            </motion.div>
+            <div className="flex flex-col leading-none gap-0.5">
+              <span
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 600,
+                  fontSize: "1.18rem",
+                  letterSpacing: "0.08em",
+                  color: "#fff",
+                  lineHeight: 1,
+                  transition: "color 0.3s",
+                }}
+                className="group-hover:text-[#C9A84C]"
+              >
+                AMAAN
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "0.52rem",
+                  letterSpacing: "0.28em",
+                  color: "#C9A84C",
+                  textTransform: "uppercase",
+                  lineHeight: 1,
+                }}
+              >
+                India
+              </span>
+            </div>
+          </button>
+
+          {/* ── Desktop links ── */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => handleNav(link.href)}
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  position: "relative",
+                  padding: "4px 0",
+                  color: activeLink === link.href ? "#C9A84C" : "rgba(255,255,255,0.75)",
+                  transition: "color 0.3s",
+                }}
+                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
+                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.75)"; }}
+              >
+                {link.label}
+                {/* underline indicator */}
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    width: activeLink === link.href ? "100%" : "0%",
+                    height: 1,
+                    background: "linear-gradient(to right, #C9A84C, rgba(201,168,76,0.3))",
+                    transition: "width 0.35s ease",
+                  }}
+                />
+              </button>
+            ))}
+          </nav>
+
+          {/* ── Desktop CTA ── */}
+          <div className="hidden md:flex items-center gap-5">
+            <a
+              href="tel:9540005050"
+              className="flex items-center gap-2 group"
+              style={{ textDecoration: "none" }}
+            >
+              <div
+                style={{
+                  width: 28,
+                  height: 28,
+                  border: "1px solid rgba(201,168,76,0.4)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.3s",
+                }}
+                className="group-hover:border-[#C9A84C] group-hover:bg-[rgba(201,168,76,0.1)]"
+              >
+                <Phone size={12} style={{ color: "#C9A84C" }} />
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "0.76rem",
+                  color: "rgba(255,255,255,0.7)",
+                  transition: "color 0.3s",
+                  letterSpacing: "0.04em",
+                }}
+                className="group-hover:text-[#C9A84C]"
+              >
+                9540005050
+              </span>
+            </a>
+
+            <motion.button
+              whileHover={{ scale: 1.02, boxShadow: "0 0 28px rgba(201,168,76,0.45)" }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => handleNav("#contact")}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 600,
+                fontSize: "0.68rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                background: "linear-gradient(135deg, #C9A84C, #E8C96A)",
+                color: "#080808",
+                padding: "10px 22px",
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              Book Consultation
+              <ChevronRight size={12} />
+            </motion.button>
+          </div>
+
+          {/* ── Mobile toggle ── */}
+          <motion.button
+            className="md:hidden text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            whileTap={{ scale: 0.9 }}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: 6 }}
+          >
+            <AnimatePresence mode="wait">
+              {mobileOpen ? (
+                <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <X size={22} />
+                </motion.div>
+              ) : (
+                <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Menu size={22} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
+
+        {/* Gold line below navbar when scrolled */}
+        <motion.div
+          animate={{ scaleX: scrolled ? 1 : 0, opacity: scrolled ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+          style={{
+            height: 1,
+            background: "linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent)",
+            transformOrigin: "left",
+          }}
+        />
+      </motion.nav>
+
+      {/* ── Mobile Menu ── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
+            animate={{ opacity: 1, clipPath: "circle(150% at 95% 5%)" }}
+            exit={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center"
+            style={{ background: "rgba(4,4,4,0.97)", backdropFilter: "blur(20px)" }}
+          >
+            {/* Diamond logo centered */}
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.06 }}
+              transition={{ delay: 0.2 }}
+              className="absolute"
+              style={{ width: 260, height: 260 }}
+            >
+              <img
+                src={logoImg}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  filter: "brightness(0) invert(1)",
+                }}
+              />
+            </motion.div>
+
+            <div className="flex flex-col items-center gap-6 relative z-10">
+              {navLinks.map((link, i) => (
+                <motion.button
+                  key={link.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07, ease: "easeOut" }}
+                  onClick={() => handleNav(link.href)}
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontWeight: 600,
+                    fontSize: "2.2rem",
+                    letterSpacing: "0.04em",
+                    color: "rgba(255,255,255,0.85)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "color 0.3s",
+                  }}
+                  whileHover={{ color: "#C9A84C", x: 8 }}
+                >
+                  {link.label}
+                </motion.button>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 flex flex-col items-center gap-3"
+              >
+                <a
+                  href="tel:9540005050"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "0.8rem",
+                    letterSpacing: "0.1em",
+                    color: "#C9A84C",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    textDecoration: "none",
+                  }}
+                >
+                  <Phone size={14} />
+                  9540005050
+                </a>
+                <button
+                  onClick={() => handleNav("#contact")}
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: 600,
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    background: "linear-gradient(135deg, #C9A84C, #E8C96A)",
+                    color: "#080808",
+                    padding: "13px 32px",
+                    border: "none",
+                    cursor: "pointer",
+                    marginTop: 4,
+                  }}
+                >
+                  Book Consultation
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
