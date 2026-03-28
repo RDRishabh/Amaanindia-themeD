@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { X, ZoomIn } from "lucide-react";
+import { getThemeColors } from "../../styles/themes";
+const c = getThemeColors();
 
 const galleryImages = [
   {
@@ -42,7 +44,7 @@ export function GallerySection() {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   return (
-    <section id="gallery" className="py-28 bg-[#F8F5EF]">
+    <section id="gallery" className="py-28" style={{ background: c.sectionLight }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div
@@ -53,20 +55,20 @@ export function GallerySection() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
             <span
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em" }}
-              className="text-[#C9A84C] uppercase"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
+              className="uppercase"
             >
               Visual Journey
             </span>
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15 }}
-            className="text-[#0a0a0a] text-4xl md:text-5xl"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            className="text-4xl md:text-5xl"
           >
-            Property <span className="italic text-[#C9A84C]">Gallery</span>
+            Property <span className="italic" style={{ color: c.accent }}>Gallery</span>
           </h2>
         </motion.div>
 
@@ -86,7 +88,7 @@ export function GallerySection() {
                 alt={img.label}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/50 transition-all duration-400 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-400 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-400 text-center">
                   <ZoomIn size={28} className="text-white mx-auto mb-2" />
                   <span
@@ -121,7 +123,7 @@ export function GallerySection() {
           onClick={() => setLightbox(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white hover:text-[#C9A84C] transition-colors"
+            className="absolute top-6 right-6 text-white hover:text-[var(--t-accent)] transition-colors"
             onClick={() => setLightbox(null)}
           >
             <X size={28} />
