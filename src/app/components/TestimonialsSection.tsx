@@ -2,44 +2,26 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Rajiv Sharma",
-    role: "Senior IT Professional, Noida",
-    rating: 5,
-    text: "Amaan India transformed my property search completely. Their team's market knowledge is unparalleled — they helped me identify a project in Gurugram that has already appreciated 32% in 18 months. The transparency and hand-holding throughout the process was exceptional.",
-    initials: "RS",
-    color: "#C9A84C",
-  },
-  {
-    name: "Priya Kapoor",
-    role: "Entrepreneur & Investor, Delhi",
-    rating: 5,
-    text: "I've worked with many real estate consultants, but Amaan India stands in a different league entirely. Their investment advisory team gave me data-backed insights that helped me diversify across 3 properties. My portfolio has grown 45% in 2 years.",
-    initials: "PK",
-    color: "#8B6914",
-  },
-  {
-    name: "Arun Mehta",
-    role: "Commercial Investor, Mumbai",
-    rating: 5,
-    text: "Finding the right commercial space in Noida was daunting, but Amaan India made it seamless. From shortlisting to registration, every step was handled professionally. I now own a Grade-A office space that yields 9% annually. Truly the best in the business.",
-    initials: "AM",
-    color: "#5a4a28",
-  },
-];
+import { getThemeColors } from "../../styles/themes";
 
 export function TestimonialsSection() {
+  const c = getThemeColors();
+
+  const testimonials = [
+    { name: "Rajiv Sharma", role: "Senior IT Professional, Noida", rating: 5, text: "Amaan India transformed my property search completely. Their team's market knowledge is unparalleled — they helped me identify a project in Gurugram that has already appreciated 32% in 18 months. The transparency and hand-holding throughout the process was exceptional.", initials: "RS" },
+    { name: "Priya Kapoor", role: "Entrepreneur & Investor, Delhi", rating: 5, text: "I've worked with many real estate consultants, but Amaan India stands in a different league entirely. Their investment advisory team gave me data-backed insights that helped me diversify across 3 properties. My portfolio has grown 45% in 2 years.", initials: "PK" },
+    { name: "Arun Mehta", role: "Commercial Investor, Mumbai", rating: 5, text: "Finding the right commercial space in Noida was daunting, but Amaan India made it seamless. From shortlisting to registration, every step was handled professionally. I now own a Grade-A office space that yields 9% annually. Truly the best in the business.", initials: "AM" },
+  ];
+
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [current, setCurrent] = useState(0);
 
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
+  const prev = () => setCurrent((s) => (s - 1 + testimonials.length) % testimonials.length);
+  const next = () => setCurrent((s) => (s + 1) % testimonials.length);
 
   return (
-    <section className="py-28 bg-[#0a0a0a] relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden" style={{ background: c.sectionDark }}>
       {/* Background element */}
       <div
         style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "18rem", lineHeight: 1, letterSpacing: "-0.05em" }}
@@ -58,20 +40,20 @@ export function TestimonialsSection() {
           className="text-center mb-20"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
             <span
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em" }}
-              className="text-[#C9A84C] uppercase"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
+              className="uppercase"
             >
               Client Stories
             </span>
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15 }}
-            className="text-white text-4xl md:text-5xl"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            className="text-4xl md:text-5xl"
           >
-            What Our <span className="italic text-[#C9A84C]">Clients Say</span>
+            What Our <span className="italic" style={{ color: c.accent }}>Clients Say</span>
           </h2>
         </motion.div>
 
@@ -83,28 +65,31 @@ export function TestimonialsSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: i * 0.15 }}
-              className="relative bg-[#111111] border border-[#1e1e1e] hover:border-[#C9A84C] p-8 transition-all duration-400 group"
+              className="relative border p-8 transition-all duration-400 group"
+              style={{ background: c.cardBg, borderColor: c.borderSubtle }}
+              onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.borderColor = c.accent}
+              onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.borderColor = c.borderSubtle}
             >
-              <Quote size={36} className="text-[#C9A84C]/20 mb-6" />
+              <Quote size={36} className="mb-6" style={{ color: `rgba(${c.accentRgb},0.20)` }} />
 
               {/* Stars */}
               <div className="flex gap-1 mb-5">
                 {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} size={14} fill="#C9A84C" className="text-[#C9A84C]" />
+                  <Star key={j} size={14} style={{ fill: c.accent, color: c.accent }} />
                 ))}
               </div>
 
               <p
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.88rem", lineHeight: 1.85 }}
-                className="text-white/60 mb-8 italic"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.88rem", lineHeight: 1.85, color: c.textSecondary }}
+                className="mb-8 italic"
               >
                 "{t.text}"
               </p>
 
-              <div className="flex items-center gap-4 pt-6 border-t border-[#1e1e1e]">
+              <div className="flex items-center gap-4 pt-6" style={{ borderTop: `1px solid ${c.borderSubtle}` }}>
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: t.color }}
+                  style={{ backgroundColor: c.avatarColors[i] }}
                 >
                   <span
                     style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1rem" }}
@@ -115,14 +100,13 @@ export function TestimonialsSection() {
                 </div>
                 <div>
                   <span
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem" }}
-                    className="text-white block"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: c.textPrimary }}
+                    className="block"
                   >
                     {t.name}
                   </span>
                   <span
-                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.7rem", letterSpacing: "0.05em" }}
-                    className="text-[#C9A84C]"
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.7rem", letterSpacing: "0.05em", color: c.accent }}
                   >
                     {t.role}
                   </span>
@@ -140,34 +124,35 @@ export function TestimonialsSection() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.4 }}
-            className="bg-[#111111] border border-[#1e1e1e] p-8"
+            className="border p-8"
+            style={{ background: c.cardBg, borderColor: c.borderSubtle }}
           >
-            <Quote size={32} className="text-[#C9A84C]/20 mb-4" />
+            <Quote size={32} className="mb-4" style={{ color: `rgba(${c.accentRgb},0.20)` }} />
             <div className="flex gap-1 mb-4">
               {Array.from({ length: testimonials[current].rating }).map((_, j) => (
-                <Star key={j} size={14} fill="#C9A84C" className="text-[#C9A84C]" />
+                <Star key={j} size={14} style={{ fill: c.accent, color: c.accent }} />
               ))}
             </div>
             <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.9rem", lineHeight: 1.85 }}
-              className="text-white/60 mb-6 italic"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.9rem", lineHeight: 1.85, color: c.textSecondary }}
+              className="mb-6 italic"
             >
               "{testimonials[current].text}"
             </p>
             <div className="flex items-center gap-4">
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: testimonials[current].color }}
+                style={{ backgroundColor: c.avatarColors[current] }}
               >
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1rem" }} className="text-white">
                   {testimonials[current].initials}
                 </span>
               </div>
               <div>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem" }} className="text-white block">
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: c.textPrimary }} className="block">
                   {testimonials[current].name}
                 </span>
-                <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.7rem" }} className="text-[#C9A84C]">
+                <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.7rem", color: c.accent }}>
                   {testimonials[current].role}
                 </span>
               </div>
@@ -175,7 +160,21 @@ export function TestimonialsSection() {
           </motion.div>
 
           <div className="flex items-center justify-center gap-6 mt-8">
-            <button onClick={prev} className="w-10 h-10 border border-[#2a2a2a] hover:border-[#C9A84C] flex items-center justify-center text-white hover:text-[#C9A84C] transition-colors">
+            <button
+              onClick={prev}
+              className="w-10 h-10 flex items-center justify-center transition-all duration-300"
+              style={{ border: `1px solid ${c.borderMedium}`, color: c.textSecondary }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = c.accent;
+                el.style.color = c.accent;
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = c.borderMedium;
+                el.style.color = c.textSecondary;
+              }}
+            >
               <ChevronLeft size={18} />
             </button>
             <div className="flex gap-2">
@@ -183,11 +182,29 @@ export function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-[2px] transition-all duration-400 ${i === current ? "w-8 bg-[#C9A84C]" : "w-2 bg-white/20"}`}
+                  className="h-[2px] transition-all duration-400"
+                  style={{
+                    width: i === current ? 32 : 8,
+                    background: i === current ? c.accent : c.borderMedium,
+                  }}
                 />
               ))}
             </div>
-            <button onClick={next} className="w-10 h-10 border border-[#2a2a2a] hover:border-[#C9A84C] flex items-center justify-center text-white hover:text-[#C9A84C] transition-colors">
+            <button
+              onClick={next}
+              className="w-10 h-10 flex items-center justify-center transition-all duration-300"
+              style={{ border: `1px solid ${c.borderMedium}`, color: c.textSecondary }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = c.accent;
+                el.style.color = c.accent;
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = c.borderMedium;
+                el.style.color = c.textSecondary;
+              }}
+            >
               <ChevronRight size={18} />
             </button>
           </div>
