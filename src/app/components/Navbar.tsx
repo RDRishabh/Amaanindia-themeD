@@ -64,8 +64,8 @@ export function Navbar() {
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  filter: c.logoFilter,
-                  transition: "filter 0.3s",
+                  filter: scrolled ? c.logoFilter : "brightness(0) invert(1)",
+                  transition: "filter 0.5s",
                 }}
               />
             </motion.div>
@@ -76,9 +76,9 @@ export function Navbar() {
                   fontWeight: 600,
                   fontSize: "1.18rem",
                   letterSpacing: "0.08em",
-                  color: "#fff",
+                  color: scrolled ? c.textPrimary : "#fff",
                   lineHeight: 1,
-                  transition: "color 0.3s",
+                  transition: "color 0.5s",
                 }}
                 className="group-hover:text-[var(--t-accent)]"
               >
@@ -117,11 +117,11 @@ export function Navbar() {
                   cursor: "pointer",
                   position: "relative",
                   padding: "4px 0",
-                  color: activeLink === link.href ? c.accent : c.textSecondary,
-                  transition: "color 0.3s",
+                  color: activeLink === link.href ? c.accent : (scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"),
+                  transition: "color 0.5s",
                 }}
-                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = c.textPrimary; }}
-                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = c.textSecondary; }}
+                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textPrimary : "#fff"; }}
+                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"; }}
               >
                 {link.label}
                 {/* underline indicator */}
@@ -167,8 +167,8 @@ export function Navbar() {
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 500,
                   fontSize: "0.76rem",
-                  color: c.textSecondary,
-                  transition: "color 0.3s",
+                  color: scrolled ? c.textSecondary : "rgba(255,255,255,0.75)",
+                  transition: "color 0.5s",
                   letterSpacing: "0.04em",
                 }}
                 className="group-hover:text-[var(--t-accent)]"
