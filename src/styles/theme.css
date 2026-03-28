@@ -18,7 +18,7 @@
   --accent-foreground: var(--t-text-primary, #1a1a1a);
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: var(--t-border-subtle, rgba(0,0,0,0.1));
+  --border: var(--t-border-subtle, rgba(26,26,26,0.09));
   --input: transparent;
   --input-background: var(--t-input-bg, #F2EFE9);
   --switch-background: #cbced4;
