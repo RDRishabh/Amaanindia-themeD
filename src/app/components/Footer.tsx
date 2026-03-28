@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, Linkedin, Youtube, ArrowUp } from "lucide-react";
 import logoImg from "../../assets/logo.png";
+import { getThemeColors } from "../../styles/themes";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -26,6 +27,7 @@ const socials = [
 ];
 
 export function Footer() {
+  const c = getThemeColors();
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const handleNav = (href: string) => {
     const el = document.querySelector(href);
@@ -33,7 +35,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#050505] border-t border-[#1a1a1a]">
+    <footer style={{ background: c.sectionDark, borderTop: `1px solid ${c.borderSubtle}` }}>
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -48,18 +50,18 @@ export function Footer() {
                     width: "100%",
                     height: "100%",
                     objectFit: "contain",
-                    filter: "brightness(0) invert(1) opacity(0.85)",
+                    filter: c.logoFilter,
                   }}
                 />
               </div>
               <div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.2rem", letterSpacing: "0.05em" }} className="text-white">AMAAN</div>
-                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.25em" }} className="text-[#C9A84C]">INDIA</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.2rem", letterSpacing: "0.05em", color: c.textPrimary }}>AMAAN</div>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.25em", color: c.accent }}>INDIA</div>
               </div>
             </div>
             <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.8 }}
-              className="text-white/45 mb-6"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.8, color: c.textMuted }}
+              className="mb-6"
             >
               India's most trusted real estate advisory, guiding salaried professionals, real estate investors, and commercial buyers to make confident property decisions since 2010.
             </p>
@@ -69,7 +71,18 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-8 h-8 border border-[#2a2a2a] hover:border-[#C9A84C] hover:text-[#C9A84C] flex items-center justify-center text-white/40 transition-all duration-300"
+                  className="w-8 h-8 flex items-center justify-center transition-all duration-300"
+                  style={{ border: `1px solid ${c.borderMedium}`, color: c.textMuted }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = c.accent;
+                    el.style.color = c.accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = c.borderMedium;
+                    el.style.color = c.textMuted;
+                  }}
                 >
                   <Icon size={14} />
                 </a>
@@ -80,8 +93,8 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h4
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em" }}
-              className="text-[#C9A84C] uppercase mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
+              className="uppercase mb-6"
             >
               Quick Links
             </h4>
@@ -90,10 +103,10 @@ export function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => handleNav(link.href)}
-                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem" }}
-                    className="text-white/45 hover:text-[#C9A84C] transition-colors duration-300 flex items-center gap-2 group"
+                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }}
+                    className="hover:text-[var(--t-accent)] transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="w-4 h-px bg-white/20 group-hover:bg-[#C9A84C] group-hover:w-6 transition-all duration-300" />
+                    <span className="w-4 h-px bg-[var(--t-border-medium)] group-hover:bg-[var(--t-accent)] group-hover:w-6 transition-all duration-300" />
                     {link.label}
                   </button>
                 </li>
@@ -104,8 +117,8 @@ export function Footer() {
           {/* Services */}
           <div>
             <h4
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em" }}
-              className="text-[#C9A84C] uppercase mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
+              className="uppercase mb-6"
             >
               Our Services
             </h4>
@@ -113,10 +126,10 @@ export function Footer() {
               {services.map((svc) => (
                 <li key={svc}>
                   <button
-                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem" }}
-                    className="text-white/45 hover:text-[#C9A84C] transition-colors duration-300 flex items-center gap-2 group text-left"
+                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }}
+                    className="hover:text-[var(--t-accent)] transition-colors duration-300 flex items-center gap-2 group text-left"
                   >
-                    <span className="w-4 h-px bg-white/20 group-hover:bg-[#C9A84C] group-hover:w-6 transition-all duration-300" />
+                    <span className="w-4 h-px bg-[var(--t-border-medium)] group-hover:bg-[var(--t-accent)] group-hover:w-6 transition-all duration-300" />
                     {svc}
                   </button>
                 </li>
@@ -127,23 +140,23 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em" }}
-              className="text-[#C9A84C] uppercase mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
+              className="uppercase mb-6"
             >
               Contact Us
             </h4>
             <div className="space-y-4">
               <a href="tel:9540005050" className="flex items-start gap-3 group">
-                <Phone size={14} className="text-[#C9A84C] mt-1 flex-shrink-0" />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem" }} className="text-white/45 group-hover:text-white transition-colors">+91 95400 05050</span>
+                <Phone size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">+91 95400 05050</span>
               </a>
               <a href="mailto:info@amaanindia.com" className="flex items-start gap-3 group">
-                <Mail size={14} className="text-[#C9A84C] mt-1 flex-shrink-0" />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem" }} className="text-white/45 group-hover:text-white transition-colors">info@amaanindia.com</span>
+                <Mail size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">info@amaanindia.com</span>
               </a>
               <div className="flex items-start gap-3">
-                <MapPin size={14} className="text-[#C9A84C] mt-1 flex-shrink-0" />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", lineHeight: 1.6 }} className="text-white/45">304, DLF Corporate Park,<br />Sector 74A, Gurugram, HR 122004</span>
+                <MapPin size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", lineHeight: 1.6, color: c.textMuted }}>304, DLF Corporate Park,<br />Sector 74A, Gurugram, HR 122004</span>
               </div>
             </div>
           </div>
@@ -151,21 +164,31 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[#141414]">
+      <div style={{ borderTop: `1px solid ${c.borderSubtle}` }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem" }}
-            className="text-white/30"
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }}
           >
             © {new Date().getFullYear()} Amaan India. All rights reserved. | RERA Registered
           </p>
           <div className="flex items-center gap-6">
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem" }} className="text-white/30 hover:text-[#C9A84C] transition-colors">Privacy Policy</button>
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem" }} className="text-white/30 hover:text-[#C9A84C] transition-colors">Terms of Use</button>
+            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">Privacy Policy</button>
+            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">Terms of Use</button>
           </div>
           <button
             onClick={scrollTop}
-            className="w-9 h-9 border border-[#2a2a2a] hover:border-[#C9A84C] hover:text-[#C9A84C] flex items-center justify-center text-white/40 transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center transition-all duration-300"
+            style={{ border: `1px solid ${c.borderMedium}`, color: c.textMuted }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.borderColor = c.accent;
+              el.style.color = c.accent;
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.borderColor = c.borderMedium;
+              el.style.color = c.textMuted;
+            }}
           >
             <ArrowUp size={16} />
           </button>
