@@ -205,6 +205,54 @@ const themes: Record<ThemeKey, ThemeTokens> = {
     selectionText: '#FFFFFF',
     logoFilter: 'none',
   },
+
+  // ── Theme D: Luxury Estate (Venus & Jupiter — Warm Cream + Forest Green + Bronze/Gold) ──
+  D: {
+    accent: '#2C4A3A',
+    accentHover: '#1E3528',
+    accentLight: '#3D6B57',
+    accentRgb: '44,74,58',
+    onAccent: '#FBF6EA',
+
+    sectionDark: '#E8D8BC',
+    sectionMid: '#EEE2CC',
+    sectionLight: '#F5EDD8',
+    sectionWhite: '#FBF6EA',
+
+    cardBg: '#FBF6EA',
+    cardBgSubtle: '#EEE2CC',
+    inputBg: '#EEE2CC',
+
+    navScrolledBg: 'rgba(232,216,188,0.96)',
+    navShadow: '0 1px 0 rgba(44,74,58,0.15), 0 8px 40px rgba(28,20,16,0.10)',
+    mobileMenuBg: 'rgba(232,216,188,0.97)',
+
+    textPrimary: '#1C1410',
+    textSecondary: 'rgba(28,20,16,0.62)',
+    textMuted: 'rgba(28,20,16,0.42)',
+
+    borderMedium: 'rgba(28,20,16,0.15)',
+    borderSubtle: 'rgba(28,20,16,0.09)',
+
+    ctaOverlayStart: 'rgba(228,214,184,0.95)',
+    ctaOverlayMid: 'rgba(228,214,184,0.85)',
+    ctaOverlayEnd: 'rgba(228,214,184,0.60)',
+
+    galleryOverlay: 'rgba(28,20,16,0)',
+
+    glowColor: 'rgba(160,120,48,0.12)',
+
+    avatarColors: ['#2C4A3A', '#A07830', '#3D6B57'],
+
+    mapFilter: 'none',
+
+    scrollbarTrack: '#EEE2CC',
+    scrollbarThumb: '#A07830',
+
+    selectionBg: '#A07830',
+    selectionText: '#FBF6EA',
+    logoFilter: 'none',
+  },
 };
 
 export function getThemeColors(): ThemeTokens {
