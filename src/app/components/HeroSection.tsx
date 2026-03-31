@@ -179,21 +179,24 @@ function PropertyCard() {
         bottom: -30,
         right: 0,
         minWidth: 230,
-        background: "rgba(8,8,8,0.82)",
-        backdropFilter: "blur(22px)",
-        border: `1px solid rgba(${c.accentRgb},0.35)`,
+        background: "rgba(8,20,14,0.78)",
+        backdropFilter: "blur(28px)",
+        WebkitBackdropFilter: "blur(28px)",
+        border: "1px solid rgba(201,164,74,0.40)",
+        borderTop: "2px solid rgba(201,164,74,0.55)",
         borderRadius: 2,
+        boxShadow: "0 20px 60px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.06)",
       }}
     >
       <div style={{ padding: "18px 20px" }}>
         <div className="flex items-center gap-2 mb-3">
-          <Building2 size={12} style={{ color: c.accent }} />
+          <Building2 size={12} style={{ color: "#C9A44A" }} />
           <span
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: "0.6rem",
               letterSpacing: "0.25em",
-              color: c.accent,
+              color: "#C9A44A",
               textTransform: "uppercase",
             }}
           >
@@ -218,7 +221,7 @@ function PropertyCard() {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.1rem", color: c.accent }}>
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.1rem", color: "#C9A44A" }}>
             ₹3.2 Cr+
           </span>
           <span
@@ -235,7 +238,7 @@ function PropertyCard() {
         </div>
         {/* progress bar */}
         <div className="mt-3 h-px bg-white/10">
-          <div className="h-full" style={{ width: "72%", backgroundColor: c.accent }} />
+          <div className="h-full" style={{ width: "72%", background: "linear-gradient(to right, #C9A44A, rgba(201,164,74,0.4))" }} />
         </div>
         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.6rem", color: "rgba(255,255,255,0.3)" }}>
           72% Sold
@@ -341,8 +344,21 @@ export function HeroSection() {
       ))}
 
       {/* ── Gradient overlays ── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#030303]/85 via-[#030303]/55 to-[#030303]/20 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#030303]/40 via-transparent to-[#030303]/75 pointer-events-none" />
+      {/* Left→Right: deep forest-green tint — strong for text, fades to preserve image */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: `linear-gradient(to right, rgba(10,22,16,0.82) 0%, rgba(10,22,16,0.52) 42%, rgba(10,22,16,0.18) 68%, transparent 100%)` }}
+      />
+      {/* Top→Bottom: atmospheric depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: `linear-gradient(to bottom, rgba(10,22,16,0.48) 0%, transparent 38%, rgba(10,22,16,0.72) 100%)` }}
+      />
+      {/* Edge vignette — soft luxury depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: `radial-gradient(ellipse at 50% 50%, transparent 58%, rgba(5,12,9,0.60) 100%)` }}
+      />
 
       {/* ── Animated light streak ── */}
       <motion.div
@@ -424,9 +440,9 @@ export function HeroSection() {
             {/* Headline – each line in its own overflow:hidden clip */}
             <div>
               {[
-                { text: "Make the Right", style: { color: "#fff", fontStyle: "normal" } },
-                { text: "Property Decision", style: { color: c.accent, fontStyle: "italic" } },
-                { text: "with Expert Guidance", style: { color: "rgba(255,255,255,0.88)", fontStyle: "normal" } },
+                { text: "Make the Right",       style: { color: "#FFFFFF",   fontStyle: "normal" as const } },
+                { text: "Property Decision",    style: { color: "#C9A44A",   fontStyle: "italic"  as const } },
+                { text: "with Expert Guidance", style: { color: "rgba(255,255,255,0.96)", fontStyle: "normal" as const } },
               ].map((line, i) => (
                 <div key={i} className="hero-title-wrap overflow-hidden" style={{ lineHeight: 1 }}>
                   <div
@@ -438,6 +454,7 @@ export function HeroSection() {
                       lineHeight: 1.15,
                       display: "block",
                       paddingBottom: "0.08em",
+                      textShadow: "0 2px 16px rgba(0,0,0,0.55)",
                       ...line.style,
                     }}
                   >
@@ -455,8 +472,9 @@ export function HeroSection() {
                 fontWeight: 300,
                 fontSize: "clamp(0.82rem, 1.1vw, 0.95rem)",
                 lineHeight: 1.75,
-                color: "rgba(255,255,255,0.62)",
+                color: "rgba(255,255,255,0.84)",
                 maxWidth: 460,
+                textShadow: "0 1px 8px rgba(0,0,0,0.45)",
               }}
             >
               India's most trusted real estate advisory — helping professionals&nbsp;&amp; investors
@@ -475,23 +493,27 @@ export function HeroSection() {
                   textTransform: "uppercase",
                   background: `linear-gradient(135deg, ${c.accent} 0%, ${c.accentLight} 50%, ${c.accent} 100%)`,
                   backgroundSize: "200% 100%",
-                  color: c.onAccent,
+                  color: "#FBF6EA",
                   padding: "14px 28px",
                   border: "none",
+                  borderBottom: "2px solid rgba(201,164,74,0.70)",
                   cursor: "pointer",
                   transition: "all 0.4s ease",
                   position: "relative",
                   overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(44,74,58,0.35)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "100% 0";
-                  (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 0 40px rgba(${c.accentRgb},0.55), 0 8px 24px rgba(0,0,0,0.4)`;
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 0 48px rgba(${c.accentRgb},0.65), 0 8px 28px rgba(0,0,0,0.45), 0 0 20px rgba(201,164,74,0.25)`;
                   (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLButtonElement).style.borderBottomColor = "rgba(201,164,74,1)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.backgroundPosition = "0% 0";
-                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(44,74,58,0.35)";
                   (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLButtonElement).style.borderBottomColor = "rgba(201,164,74,0.70)";
                 }}
               >
                 Get Expert Property Advice
@@ -505,10 +527,11 @@ export function HeroSection() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.85)",
+                  color: "rgba(255,255,255,0.90)",
                   padding: "13px 24px",
-                  background: "transparent",
-                  border: "1px solid rgba(255,255,255,0.28)",
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.38)",
+                  backdropFilter: "blur(8px)",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
@@ -516,14 +539,18 @@ export function HeroSection() {
                   transition: "all 0.35s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = c.accent;
-                  (e.currentTarget as HTMLButtonElement).style.color = c.accent;
-                  (e.currentTarget as HTMLButtonElement).style.background = `rgba(${c.accentRgb},0.06)`;
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "#C9A44A";
+                  (e.currentTarget as HTMLButtonElement).style.color = "#C9A44A";
+                  (e.currentTarget as HTMLButtonElement).style.background = `rgba(201,164,74,0.10)`;
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 18px rgba(201,164,74,0.20)";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.28)";
-                  (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.85)";
-                  (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.38)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.90)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.04)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
                 }}
               >
                 <Play size={12} style={{ fill: "currentColor" }} />
@@ -550,14 +577,15 @@ export function HeroSection() {
               return (
                 <div key={stat.label} className="hero-stat flex flex-col">
                   <div className="flex items-center gap-1.5 mb-0.5">
-                    <Icon size={11} style={{ color: c.accent, opacity: 0.7 }} />
+                    <Icon size={11} style={{ color: "#C9A44A", opacity: 0.75 }} />
                     <span
                       style={{
                         fontFamily: "'Cormorant Garamond', serif",
                         fontWeight: 700,
                         fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
-                        color: c.accent,
+                        color: "#C9A44A",
                         lineHeight: 1,
+                        textShadow: "0 1px 10px rgba(201,164,74,0.35)",
                       }}
                     >
                       {stat.value}
