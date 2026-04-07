@@ -72,9 +72,9 @@ export function Navbar() {
             <div className="flex flex-col leading-none gap-0.5">
               <span
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 600,
-                  fontSize: "1.18rem",
+                  fontSize: "1.05rem",
                   letterSpacing: "0.08em",
                   color: scrolled ? c.textPrimary : "#fff",
                   lineHeight: 1,
@@ -275,9 +275,9 @@ export function Navbar() {
                   transition={{ delay: 0.1 + i * 0.07, ease: "easeOut" }}
                   onClick={() => handleNav(link.href)}
                   style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontWeight: 600,
-                    fontSize: "2.2rem",
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: 500,
+                    fontSize: "2rem",
                     letterSpacing: "0.04em",
                     color: c.textPrimary,
                     background: "none",

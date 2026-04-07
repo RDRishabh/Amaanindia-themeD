@@ -58,7 +58,7 @@ export function TrustSection() {
               </span>
             </div>
             <h2
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
               className="text-4xl md:text-5xl mb-6"
             >
               India's Premier
@@ -135,7 +135,7 @@ export function TrustSection() {
                   />
                 </div>
                 <h3
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.2rem", lineHeight: 1.3, color: c.textPrimary }}
+                  style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.05rem", lineHeight: 1.3, color: c.textPrimary }}
                   className="mb-3"
                 >
                   {p.title}

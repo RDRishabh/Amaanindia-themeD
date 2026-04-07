@@ -65,7 +65,7 @@ export function GallerySection() {
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
             Property <span className="italic" style={{ color: c.accent }}>Gallery</span>
@@ -92,7 +92,7 @@ export function GallerySection() {
                 <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-400 text-center">
                   <ZoomIn size={28} className="text-white mx-auto mb-2" />
                   <span
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, fontSize: "1.1rem" }}
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.95rem" }}
                     className="text-white"
                   >
                     {img.label}
@@ -139,7 +139,7 @@ export function GallerySection() {
           />
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <span
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, fontSize: "1.2rem" }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "1rem" }}
               className="text-white"
             >
               {galleryImages[lightbox].label}

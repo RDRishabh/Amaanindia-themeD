@@ -24,7 +24,7 @@ export function TestimonialsSection() {
     <section className="py-28 relative overflow-hidden" style={{ background: c.sectionDark }}>
       {/* Background element */}
       <div
-        style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "18rem", lineHeight: 1, letterSpacing: "-0.05em" }}
+        style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "18rem", lineHeight: 1, letterSpacing: "-0.05em" }}
         className="absolute -top-10 left-0 text-white/[0.02] pointer-events-none select-none hidden lg:block"
       >
         "
@@ -50,7 +50,7 @@ export function TestimonialsSection() {
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
             What Our <span className="italic" style={{ color: c.accent }}>Clients Say</span>
@@ -92,7 +92,7 @@ export function TestimonialsSection() {
                   style={{ backgroundColor: c.avatarColors[i] }}
                 >
                   <span
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1rem" }}
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.85rem" }}
                     className="text-white"
                   >
                     {t.initials}
@@ -100,7 +100,7 @@ export function TestimonialsSection() {
                 </div>
                 <div>
                   <span
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: c.textPrimary }}
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: c.textPrimary }}
                     className="block"
                   >
                     {t.name}
@@ -144,12 +144,12 @@ export function TestimonialsSection() {
                 className="w-12 h-12 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: c.avatarColors[current] }}
               >
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1rem" }} className="text-white">
+                <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.85rem" }} className="text-white">
                   {testimonials[current].initials}
                 </span>
               </div>
               <div>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: c.textPrimary }} className="block">
+                <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: c.textPrimary }} className="block">
                   {testimonials[current].name}
                 </span>
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.7rem", color: c.accent }}>

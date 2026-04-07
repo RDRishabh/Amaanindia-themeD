@@ -206,26 +206,26 @@ const themes: Record<ThemeKey, ThemeTokens> = {
     logoFilter: 'none',
   },
 
-  // ── Theme D: Luxury Estate (Venus & Jupiter — Warm Cream + Forest Green + Bronze/Gold) ──
+  // ── Theme D: Luxury Estate (Venus & Jupiter — Warm Beige + Forest Green + Bronze/Gold) ──
   D: {
     accent: '#2C4A3A',
     accentHover: '#1E3528',
     accentLight: '#3D6B57',
     accentRgb: '44,74,58',
-    onAccent: '#FBF6EA',
+    onAccent: '#F0E2C8',
 
-    sectionDark: '#E8D8BC',
-    sectionMid: '#EEE2CC',
-    sectionLight: '#F5EDD8',
-    sectionWhite: '#FBF6EA',
+    sectionDark: '#CBAF7D',
+    sectionMid: '#D9C498',
+    sectionLight: '#E5D2B0',
+    sectionWhite: '#F0E2C8',
 
-    cardBg: '#FBF6EA',
-    cardBgSubtle: '#EEE2CC',
-    inputBg: '#EEE2CC',
+    cardBg: '#F0E2C8',
+    cardBgSubtle: '#D9C498',
+    inputBg: '#D9C498',
 
-    navScrolledBg: 'rgba(232,216,188,0.96)',
+    navScrolledBg: 'rgba(203,175,125,0.96)',
     navShadow: '0 1px 0 rgba(44,74,58,0.15), 0 8px 40px rgba(28,20,16,0.10)',
-    mobileMenuBg: 'rgba(232,216,188,0.97)',
+    mobileMenuBg: 'rgba(203,175,125,0.97)',
 
     textPrimary: '#1C1410',
     textSecondary: 'rgba(28,20,16,0.62)',
@@ -234,9 +234,9 @@ const themes: Record<ThemeKey, ThemeTokens> = {
     borderMedium: 'rgba(28,20,16,0.15)',
     borderSubtle: 'rgba(28,20,16,0.09)',
 
-    ctaOverlayStart: 'rgba(228,214,184,0.95)',
-    ctaOverlayMid: 'rgba(228,214,184,0.85)',
-    ctaOverlayEnd: 'rgba(228,214,184,0.60)',
+    ctaOverlayStart: 'rgba(217,196,152,0.95)',
+    ctaOverlayMid: 'rgba(217,196,152,0.85)',
+    ctaOverlayEnd: 'rgba(217,196,152,0.60)',
 
     galleryOverlay: 'rgba(28,20,16,0)',
 
@@ -246,11 +246,59 @@ const themes: Record<ThemeKey, ThemeTokens> = {
 
     mapFilter: 'none',
 
-    scrollbarTrack: '#EEE2CC',
+    scrollbarTrack: '#D9C498',
     scrollbarThumb: '#A07830',
 
     selectionBg: '#A07830',
-    selectionText: '#FBF6EA',
+    selectionText: '#F0E2C8',
+    logoFilter: 'none',
+  },
+
+  // ── Theme E: True Beige (Classic Internet Beige — F5F5DC family + warm taupe accents) ──
+  E: {
+    accent: '#7C6A52',
+    accentHover: '#62533E',
+    accentLight: '#9E896E',
+    accentRgb: '124,106,82',
+    onAccent: '#FFFFF0',
+
+    sectionDark: '#D4C8B0',
+    sectionMid: '#DDD2BE',
+    sectionLight: '#EAE3D2',
+    sectionWhite: '#F5F0E8',
+
+    cardBg: '#F5F0E8',
+    cardBgSubtle: '#DDD2BE',
+    inputBg: '#DDD2BE',
+
+    navScrolledBg: 'rgba(212,200,176,0.96)',
+    navShadow: '0 1px 0 rgba(124,106,82,0.18), 0 8px 40px rgba(40,30,20,0.10)',
+    mobileMenuBg: 'rgba(212,200,176,0.97)',
+
+    textPrimary: '#2C2318',
+    textSecondary: 'rgba(44,35,24,0.62)',
+    textMuted: 'rgba(44,35,24,0.42)',
+
+    borderMedium: 'rgba(44,35,24,0.15)',
+    borderSubtle: 'rgba(44,35,24,0.09)',
+
+    ctaOverlayStart: 'rgba(221,210,190,0.95)',
+    ctaOverlayMid: 'rgba(221,210,190,0.85)',
+    ctaOverlayEnd: 'rgba(221,210,190,0.60)',
+
+    galleryOverlay: 'rgba(44,35,24,0)',
+
+    glowColor: 'rgba(124,106,82,0.14)',
+
+    avatarColors: ['#7C6A52', '#62533E', '#9E896E'],
+
+    mapFilter: 'none',
+
+    scrollbarTrack: '#DDD2BE',
+    scrollbarThumb: '#7C6A52',
+
+    selectionBg: '#7C6A52',
+    selectionText: '#FFFFF0',
     logoFilter: 'none',
   },
 };

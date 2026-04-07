@@ -53,7 +53,7 @@ export function AmenitiesSection() {
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
             Premium <span className="italic" style={{ color: c.accent }}>Amenities</span>
@@ -114,7 +114,7 @@ export function AmenitiesSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 to-transparent" />
             <span
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.3rem" }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.1rem" }}
               className="absolute bottom-4 left-4 text-white"
             >
               Fitness Centre
@@ -128,7 +128,7 @@ export function AmenitiesSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 to-transparent" />
             <span
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.3rem" }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.1rem" }}
               className="absolute bottom-4 left-4 text-white"
             >
               Infinity Pool
@@ -142,7 +142,7 @@ export function AmenitiesSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 to-transparent" />
             <span
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.3rem" }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.1rem" }}
               className="absolute bottom-4 left-4 text-white"
             >
               Landscaped Gardens

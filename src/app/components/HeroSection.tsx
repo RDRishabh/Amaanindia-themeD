@@ -205,9 +205,9 @@ function PropertyCard() {
         </div>
         <p
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 600,
-            fontSize: "1.05rem",
+            fontSize: "0.92rem",
             color: "#fff",
             marginBottom: 4,
           }}
@@ -221,7 +221,7 @@ function PropertyCard() {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.1rem", color: "#C9A44A" }}>
+          <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.95rem", color: "#C9A44A" }}>
             ₹3.2 Cr+
           </span>
           <span
@@ -448,9 +448,9 @@ export function HeroSection() {
                   <div
                     className="hero-title-inner"
                     style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontWeight: 600,
-                      fontSize: "clamp(1.9rem, 3.8vw, 3.5rem)",
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontWeight: 500,
+                      fontSize: "clamp(1.7rem, 3.4vw, 3.2rem)",
                       lineHeight: 1.15,
                       display: "block",
                       paddingBottom: "0.08em",
@@ -580,9 +580,9 @@ export function HeroSection() {
                     <Icon size={11} style={{ color: "#C9A44A", opacity: 0.75 }} />
                     <span
                       style={{
-                        fontFamily: "'Cormorant Garamond', serif",
+                        fontFamily: "'Montserrat', sans-serif",
                         fontWeight: 700,
-                        fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
+                        fontSize: "clamp(1.2rem, 1.8vw, 1.55rem)",
                         color: "#C9A44A",
                         lineHeight: 1,
                         textShadow: "0 1px 10px rgba(201,164,74,0.35)",

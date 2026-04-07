@@ -55,7 +55,7 @@ export function Footer() {
                 />
               </div>
               <div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.2rem", letterSpacing: "0.05em", color: c.textPrimary }}>AMAAN</div>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "0.05em", color: c.textPrimary }}>AMAAN</div>
                 <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.25em", color: c.accent }}>INDIA</div>
               </div>
             </div>

@@ -106,7 +106,7 @@ export function ProjectsSection() {
               </span>
             </div>
             <h2
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
               className="text-4xl md:text-5xl"
             >
               Featured <span className="italic" style={{ color: c.accent }}>Projects</span>
@@ -203,7 +203,7 @@ export function ProjectsSection() {
               {/* Info */}
               <div className="p-6">
                 <h3
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.4rem", lineHeight: 1.2, color: c.textPrimary }}
+                  style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.2rem", lineHeight: 1.2, color: c.textPrimary }}
                   className="mb-2"
                 >
                   {proj.name}
@@ -220,7 +220,7 @@ export function ProjectsSection() {
                 >
                   <div>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.68rem", letterSpacing: "0.08em", color: c.textMuted }} className="uppercase block">Price Range</span>
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.15rem", color: c.accent }}>{proj.price}</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "1rem", color: c.accent }}>{proj.price}</span>
                   </div>
                   <div className="text-right">
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.68rem", letterSpacing: "0.08em", color: c.textMuted }} className="uppercase block">{proj.beds}</span>

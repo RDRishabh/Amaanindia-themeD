@@ -45,7 +45,7 @@ export function CTASection() {
             </div>
 
             <h2
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.1, color: c.textPrimary }}
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.1, color: c.textPrimary }}
               className="text-4xl md:text-6xl mb-6"
             >
               Make the Right

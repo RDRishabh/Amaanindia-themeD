@@ -57,7 +57,7 @@ export function ContactSection() {
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
             Get Expert <span className="italic" style={{ color: c.accent }}>Property Advice</span>
@@ -74,7 +74,7 @@ export function ContactSection() {
           >
             <div>
               <h3
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.6rem", lineHeight: 1.2, color: c.textPrimary }}
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.35rem", lineHeight: 1.2, color: c.textPrimary }}
                 className="mb-3"
               >
                 We'd Love To Hear From You
@@ -219,7 +219,7 @@ export function ContactSection() {
                 >
                   <CheckCircle size={56} style={{ color: c.accent }} />
                   <h3
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.8rem", color: c.textPrimary }}
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.5rem", color: c.textPrimary }}
                     className="text-center"
                   >
                     Message Received!

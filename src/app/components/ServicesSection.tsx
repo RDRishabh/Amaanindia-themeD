@@ -58,7 +58,7 @@ export function ServicesSection() {
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
           <h2
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, lineHeight: 1.15, color: c.textPrimary }}
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
             Our Core <span className="italic" style={{ color: c.accent }}>Services</span>
@@ -86,7 +86,7 @@ export function ServicesSection() {
 
               {/* Number */}
               <span
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "4rem", lineHeight: 1, color: `rgba(${c.accentRgb},0.06)` }}
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "4rem", lineHeight: 1, color: `rgba(${c.accentRgb},0.06)` }}
                 className="absolute top-4 right-4 transition-colors duration-500"
               >
                 0{i + 1}
@@ -105,7 +105,7 @@ export function ServicesSection() {
                 </div>
 
                 <h3
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.35rem", lineHeight: 1.2, color: c.textPrimary }}
+                  style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.2rem", lineHeight: 1.2, color: c.textPrimary }}
                   className="mb-3"
                 >
                   {svc.title}
