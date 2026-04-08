@@ -90,9 +90,10 @@ export function Navbar() {
                   fontWeight: 400,
                   fontSize: "0.52rem",
                   letterSpacing: "0.28em",
-                  color: c.accent,
+                  color: scrolled ? c.accent : "rgba(201,164,74,0.85)",
                   textTransform: "uppercase",
                   lineHeight: 1,
+                  transition: "color 0.5s",
                 }}
               >
                 India
@@ -117,7 +118,7 @@ export function Navbar() {
                   cursor: "pointer",
                   position: "relative",
                   padding: "4px 0",
-                  color: activeLink === link.href ? c.accent : (scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"),
+                  color: activeLink === link.href ? (scrolled ? c.accent : "#C9A44A") : (scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"),
                   transition: "color 0.5s",
                 }}
                 onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textPrimary : "#fff"; }}

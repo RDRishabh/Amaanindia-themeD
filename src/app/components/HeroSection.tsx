@@ -398,7 +398,7 @@ export function HeroSection() {
                     fontWeight: 500,
                     fontSize: "0.68rem",
                     letterSpacing: "0.32em",
-                    color: c.accent,
+                    color: "#C9A44A",
                     textTransform: "uppercase",
                   }}
                 >
@@ -412,11 +412,11 @@ export function HeroSection() {
                   gap: 6,
                   marginLeft: 8,
                   padding: "3px 10px",
-                  border: `1px solid rgba(${c.accentRgb},0.25)`,
+                  border: `1px solid rgba(201,164,74,0.30)`,
                   borderRadius: 1,
                 }}
               >
-                <MapPin size={9} color={`rgba(${c.accentRgb},0.7)`} />
+                <MapPin size={9} color={`rgba(201,164,74,0.80)`} />
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={current}
@@ -428,7 +428,7 @@ export function HeroSection() {
                       fontFamily: "'Montserrat', sans-serif",
                       fontSize: "0.6rem",
                       letterSpacing: "0.15em",
-                      color: `rgba(${c.accentRgb},0.65)`,
+                      color: `rgba(201,164,74,0.80)`,
                     }}
                   >
                     {slides[current].location}
