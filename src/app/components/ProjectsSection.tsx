@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { MapPin, ArrowUpRight } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 
-const filters = ["All", "Residential", "Commercial", "Luxury"];
+const filters = ["All", "Residential", "Commercial", "Institutional"];
 
 export function ProjectsSection() {
   const c = getThemeColors();
@@ -24,7 +24,7 @@ export function ProjectsSection() {
     {
       name: "Amaan Riviera",
       location: "Sector 150, Noida",
-      type: "Luxury",
+      type: "Residential",
       price: "₹3.5Cr – ₹7.2Cr",
       tag: "New Launch",
       tagColor: c.accent,
@@ -35,7 +35,7 @@ export function ProjectsSection() {
     {
       name: "Amaan Sky View",
       location: "Golf Course Rd, Gurugram",
-      type: "Luxury",
+      type: "Residential",
       price: "₹5Cr – ₹12Cr",
       tag: "Under Construction",
       tagColor: "#3b82f6",
@@ -68,7 +68,7 @@ export function ProjectsSection() {
     {
       name: "Amaan Signature",
       location: "Chattarpur, New Delhi",
-      type: "Luxury",
+      type: "Institutional",
       price: "₹8Cr – ₹20Cr",
       tag: "Exclusive",
       tagColor: "#a855f7",

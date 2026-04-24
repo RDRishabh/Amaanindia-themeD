@@ -48,7 +48,7 @@ export function AmenitiesSection() {
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
               className="uppercase"
             >
-              World-Class Facilities
+              Our Design
             </span>
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
@@ -56,13 +56,13 @@ export function AmenitiesSection() {
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
-            Premium <span className="italic" style={{ color: c.accent }}>Amenities</span>
+            Thoughtful <span className="italic" style={{ color: c.accent }}>Amenities</span>
           </h2>
           <p
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.8, color: c.textSecondary }}
             className="mt-4 max-w-xl mx-auto"
           >
-            Every Amaan India property comes with thoughtfully curated amenities designed for luxury living.
+            Every Amaan development is curated with amenities that reflect restraint, purpose, and long-term liveability.
           </p>
         </motion.div>
 

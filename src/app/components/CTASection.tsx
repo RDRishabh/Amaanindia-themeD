@@ -40,25 +40,35 @@ export function CTASection() {
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
                 className="uppercase"
               >
-                Take The Next Step
+                Founder's Note
               </span>
             </div>
 
             <h2
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.1, color: c.textPrimary }}
-              className="text-4xl md:text-6xl mb-6"
+              className="text-4xl md:text-5xl mb-8"
             >
-              Make the Right
-              <span className="block italic" style={{ color: c.accent }}>Property Decision</span>
-              <span className="block" style={{ color: c.textSecondary }}>with Expert Guidance</span>
+              Built on a
+              <span className="block italic" style={{ color: c.accent }}>Simple Belief</span>
             </h2>
 
-            <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: c.textSecondary }}
-              className="mb-12 max-w-lg"
-            >
-              Whether you're a salaried professional buying your first home, a seasoned real estate investor, or a commercial buyer — our expert advisors are ready to guide you every step of the way.
-            </p>
+            <div className="space-y-5 mb-12 max-w-2xl">
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
+                Amaan was founded on a simple belief: that well‑designed, well‑built spaces have a lasting impact on how people live, work, and engage with their surroundings.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
+                From the outset, the intention has never been to build for scale alone, but to build with care — placing architecture, construction quality, and long‑term relevance at the centre of every decision. Each project is approached with restraint, clarity, and respect for context, guided by collaboration with accomplished architects and trusted construction partners.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
+                At Amaan, luxury is not defined by excess, but by assurance — the confidence that comes from thoughtful planning, refined execution, and spaces built to endure.
+              </p>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.88rem", letterSpacing: "0.05em", color: c.accent }}>
+                This commitment continues to shape everything we create.
+              </p>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.82rem", letterSpacing: "0.08em", color: c.textMuted }}>
+                — Founder, Amaan
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-5">
               <motion.button
@@ -69,13 +79,13 @@ export function CTASection() {
                 style={{ background: c.accent, color: c.onAccent }}
               >
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em" }} className="uppercase">
-                  Get Expert Property Advice
+                  Get In Touch
                 </span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <a
-                href="tel:9540005050"
+                href="tel:+919000090000"
                 className="flex items-center gap-3 px-8 py-5 transition-all duration-400 backdrop-blur-sm group"
                 style={{ border: `1px solid rgba(255,255,255,0.30)`, color: "rgba(255,255,255,0.9)" }}
                 onMouseEnter={(e) => {
@@ -91,7 +101,7 @@ export function CTASection() {
               >
                 <Phone size={16} />
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.85rem", letterSpacing: "0.05em" }}>
-                  Call: 9540005050
+                  Call: +91 9000090000
                 </span>
               </a>
             </div>

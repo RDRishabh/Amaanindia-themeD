@@ -1,30 +1,25 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { Award, Users, TrendingUp, Shield } from "lucide-react";
+import { Award, Users, TrendingUp } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 const c = getThemeColors();
 
 const pillars = [
   {
     icon: Award,
-    title: "15+ Years of Expertise",
-    desc: "A decade and a half of navigating India's dynamic real estate market, delivering results that matter.",
+    title: "Architecturally Considered",
+    desc: "Every project is shaped through close collaboration with renowned architects, ensuring each space is refined in design and resolved in detail.",
   },
   {
     icon: TrendingUp,
-    title: "In-Depth Market Knowledge",
-    desc: "Real-time insights across residential, commercial, and investment segments in top metro cities.",
+    title: "Functionally Efficient",
+    desc: "Spaces are designed to serve people well — planned for how they are actually used, not simply how they appear.",
   },
   {
     icon: Users,
-    title: "Trusted by Thousands",
-    desc: "Over 2,000 families and investors have placed their trust in Amaan India for their property decisions.",
-  },
-  {
-    icon: Shield,
-    title: "End-to-End Advisory",
-    desc: "From site visits to legal due diligence and financial planning — we handle every step of the journey.",
+    title: "Built to Age Gracefully",
+    desc: "We build with material integrity and long-term relevance in mind, so every environment endures beyond its first impression.",
   },
 ];
 
@@ -38,47 +33,52 @@ export function TrustSection() {
   const { ref, isInView } = useAnimateInView();
 
   return (
-    <section id="about" className="py-28" style={{ background: c.sectionLight }}>
+    <section id="approach" className="py-28 overflow-hidden" style={{ background: c.sectionLight }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Text */}
+        <div className="grid lg:grid-cols-[1fr_1.08fr] gap-14 lg:gap-20 items-start">
+
+          {/* ── Left: Brand text ── */}
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: "easeOut" }}
+            className="max-w-2xl"
           >
-            <div className="flex items-center gap-3 mb-4">
+            {/* Overline */}
+            <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-10" style={{ background: c.accent }} />
               <span
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
                 className="uppercase"
               >
-                Who We Are
+                Our Approach
               </span>
             </div>
+
+            {/* Heading */}
             <h2
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
-              className="text-4xl md:text-5xl mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.12, color: c.textPrimary }}
+              className="text-4xl md:text-5xl mb-8"
             >
-              India's Premier
-              <span className="block italic" style={{ color: c.accent }}>Real Estate</span>
-              Advisory Firm
+              A Development Firm
+              <span className="block italic" style={{ color: c.accent }}>Built on Purpose</span>
             </h2>
+
+            {/* Thin rule */}
+            <div className="mb-8" style={{ height: 1, background: `linear-gradient(to right, ${c.accent}, transparent)` }} />
+
+            {/* Body copy */}
             <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: c.textSecondary }}
-              className="mb-6"
-            >
-              At Amaan India, we believe every property decision is a defining moment. Since 2010, we have guided <strong>salaried professionals</strong>, <strong>real estate investors</strong>, and <strong>commercial buyers</strong> through India's most dynamic property markets — with transparency, expertise, and unwavering integrity.
-            </p>
-            <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: c.textSecondary }}
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
               className="mb-10"
             >
-              We don't just sell properties — we craft investment journeys tailored to your lifestyle, financial goals, and long-term aspirations.
+              At Amaan, development begins with intent. Every project is shaped through close collaboration with renowned architects and experienced construction contractors, ensuring each space is both refined in design and robust in execution.
             </p>
+
+            {/* CTA */}
             <button
-              onClick={() => { const el = document.querySelector("#contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
+              onClick={() => { const el = document.querySelector("#projects"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
               style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
@@ -88,66 +88,104 @@ export function TrustSection() {
                 color: c.onAccent,
                 padding: "16px 32px",
                 textTransform: "uppercase" as const,
-                transition: "all 0.5s",
+                transition: "all 0.4s",
                 border: "none",
                 cursor: "pointer",
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = c.accentHover;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = c.accent;
-              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = c.accentHover; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = c.accent; }}
             >
-              Get Expert Property Advice
+              View Our Projects
             </button>
           </motion.div>
 
-          {/* Right Pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* ── Right: Pillars as editorial vertical stack ── */}
+          <div className="flex flex-col lg:pt-12">
+            {/* Top rule */}
+            <div className="h-px mb-3" style={{ background: c.borderSubtle }} />
+
             {pillars.map((p, i) => (
               <motion.div
                 key={p.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: i * 0.15 + 0.2 }}
-                className="p-8 transition-all duration-400 group"
-                style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = c.accent;
-                  el.style.boxShadow = `0 8px 40px rgba(${c.accentRgb},0.15)`;
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = c.borderSubtle;
-                  el.style.boxShadow = "none";
-                }}
+                initial={{ opacity: 0, x: 40 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, delay: i * 0.18 + 0.15 }}
+                className="relative group"
               >
+                {/* Accent top bar — slides in on hover */}
                 <div
-                  className="w-12 h-12 flex items-center justify-center mb-4 transition-colors duration-400 group-hover:bg-[var(--t-accent)]"
-                  style={{ background: c.sectionLight }}
+                  className="absolute top-0 left-0 right-0 h-[2px] origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"
+                  style={{ background: `linear-gradient(to right, ${c.accent}, transparent)` }}
+                />
+
+                <div
+                  className="flex gap-7 py-10 transition-all duration-400 group-hover:pl-3"
+                  style={{ borderBottom: `1px solid ${c.borderSubtle}` }}
                 >
-                  <p.icon
-                    size={20}
-                    className="transition-colors duration-400 group-hover:text-[var(--t-on-accent)]"
-                    style={{ color: c.accent }}
-                  />
+                  {/* Left: number + icon column */}
+                  <div className="flex flex-col items-center gap-3 flex-shrink-0 pt-1">
+                    <span
+                      style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "0.65rem",
+                        letterSpacing: "0.18em",
+                        color: c.accent,
+                      }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <div className="w-px flex-1" style={{ background: c.borderSubtle, minHeight: 32 }} />
+                    <div
+                      className="w-11 h-11 flex items-center justify-center flex-shrink-0 transition-colors duration-400 group-hover:bg-[var(--t-accent)]"
+                      style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
+                    >
+                      <p.icon
+                        size={18}
+                        className="transition-colors duration-400 group-hover:text-[var(--t-on-accent)]"
+                        style={{ color: c.accent }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Right: content */}
+                  <div className="flex-1 pt-1">
+                    {/* Ghost number */}
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontWeight: 800,
+                        fontSize: "5.5rem",
+                        lineHeight: 1,
+                        color: `rgba(${c.accentRgb},0.045)`,
+                        position: "absolute",
+                        top: 12,
+                        right: 0,
+                        userSelect: "none",
+                        pointerEvents: "none",
+                      }}
+                    >
+                      0{i + 1}
+                    </span>
+
+                    <h3
+                      style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.1rem", lineHeight: 1.25, color: c.textPrimary }}
+                      className="mb-3"
+                    >
+                      {p.title}
+                    </h3>
+                    <p
+                      style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.9rem", lineHeight: 1.8, color: c.textSecondary }}
+                    >
+                      {p.desc}
+                    </p>
+                  </div>
                 </div>
-                <h3
-                  style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.05rem", lineHeight: 1.3, color: c.textPrimary }}
-                  className="mb-3"
-                >
-                  {p.title}
-                </h3>
-                <p
-                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.88rem", lineHeight: 1.7, color: c.textSecondary }}
-                >
-                  {p.desc}
-                </p>
               </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>

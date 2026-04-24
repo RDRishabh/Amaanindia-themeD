@@ -440,9 +440,8 @@ export function HeroSection() {
             {/* Headline – each line in its own overflow:hidden clip */}
             <div>
               {[
-                { text: "Make the Right",       style: { color: "#FFFFFF",   fontStyle: "normal" as const } },
-                { text: "Property Decision",    style: { color: "#C9A44A",   fontStyle: "italic"  as const } },
-                { text: "with Expert Guidance", style: { color: "rgba(255,255,255,0.96)", fontStyle: "normal" as const } },
+                { text: "Quietly Defining",   style: { color: "#FFFFFF",   fontStyle: "normal" as const } },
+                { text: "Enduring Spaces",    style: { color: "#C9A44A",   fontStyle: "italic"  as const } },
               ].map((line, i) => (
                 <div key={i} className="hero-title-wrap overflow-hidden" style={{ lineHeight: 1 }}>
                   <div
@@ -473,12 +472,13 @@ export function HeroSection() {
                 fontSize: "clamp(0.82rem, 1.1vw, 0.95rem)",
                 lineHeight: 1.75,
                 color: "rgba(255,255,255,0.84)",
-                maxWidth: 460,
+                maxWidth: 620,
                 textShadow: "0 1px 8px rgba(0,0,0,0.45)",
               }}
             >
-              India's most trusted real estate advisory — helping professionals&nbsp;&amp; investors
-              find their perfect property since&nbsp;2010.
+              Amaan is a development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces. Our work is guided by clarity of design, strength of construction, and a long-term view of value.
+              <br className="hidden md:block" />
+              We believe quality is timeless - and luxury is found in restraint, precision, and purpose.
             </p>
 
             {/* CTA buttons */}
@@ -516,7 +516,7 @@ export function HeroSection() {
                   (e.currentTarget as HTMLButtonElement).style.borderBottomColor = "rgba(201,164,74,0.70)";
                 }}
               >
-                Get Expert Property Advice
+                Explore Our Projects
               </button>
 
               <button

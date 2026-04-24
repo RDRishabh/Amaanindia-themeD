@@ -1,13 +1,16 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef, useState } from "react";
-import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
+import { submitContact } from "../lib/api";
 
 export function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -18,11 +21,22 @@ export function ContactSection() {
 
   const c = getThemeColors();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: "", phone: "", email: "", interest: "", message: "" });
+    setSubmitError("");
+    setSubmitting(true);
+
+    try {
+      await submitContact(form);
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+      setForm({ name: "", phone: "", email: "", interest: "", message: "" });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unable to submit your enquiry.";
+      setSubmitError(message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass = `w-full border px-4 py-4 outline-none transition-colors duration-300`;
@@ -60,7 +74,7 @@ export function ContactSection() {
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
-            Get Expert <span className="italic" style={{ color: c.accent }}>Property Advice</span>
+            Get In <span className="italic" style={{ color: c.accent }}>Touch</span>
           </h2>
         </motion.div>
 
@@ -82,13 +96,13 @@ export function ContactSection() {
               <p
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.88rem", lineHeight: 1.8, color: c.textSecondary }}
               >
-                Whether you're a salaried professional, a real estate investor, or a commercial buyer — reach out for a complimentary consultation. No obligations, just clear expert guidance.
+                Have a question or need guidance? Our team is here to help, seamlessly.
               </p>
             </div>
 
             <div className="space-y-5">
               <a
-                href="tel:9540005050"
+                href="tel:+919000090000"
                 className="flex items-center gap-4 group"
               >
                 <div
@@ -112,13 +126,13 @@ export function ContactSection() {
                     style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: "1rem", color: c.textPrimary }}
                     className="group-hover:text-[var(--t-accent)] transition-colors"
                   >
-                    +91 95400 05050
+                    +91 9000090000
                   </span>
                 </div>
               </a>
 
               <a
-                href="mailto:info@amaanindia.com"
+                href="mailto:connect@amaanindia.com"
                 className="flex items-center gap-4 group"
               >
                 <div
@@ -142,12 +156,12 @@ export function ContactSection() {
                     style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: "1rem", color: c.textPrimary }}
                     className="group-hover:text-[var(--t-accent)] transition-colors"
                   >
-                    info@amaanindia.com
+                    connect@amaanindia.com
                   </span>
                 </div>
               </a>
 
-              <div className="flex items-start gap-4">
+              {/* <div className="flex items-start gap-4">
                 <div
                   className="w-12 h-12 flex items-center justify-center flex-shrink-0"
                   style={{ background: c.cardBgSubtle }}
@@ -167,12 +181,12 @@ export function ContactSection() {
                     304, DLF Corporate Park, Sector 74A, Gurugram, Haryana 122004
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/919540005050"
+              href="https://wa.me/919000090000"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-6 py-4 transition-all duration-300 group self-start"
@@ -340,16 +354,26 @@ export function ContactSection() {
 
                   <motion.button
                     type="submit"
+                    disabled={submitting}
                     whileHover={{ scale: 1.02, boxShadow: `0 0 30px rgba(${c.accentRgb},0.4)` }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full flex items-center justify-center gap-3 py-5 transition-all duration-300"
-                    style={{ background: c.accent, color: c.onAccent }}
+                    style={{ background: c.accent, color: c.onAccent, opacity: submitting ? 0.75 : 1, cursor: submitting ? "not-allowed" : "pointer" }}
                   >
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em" }} className="uppercase">
-                      Get Expert Property Advice
+                      {submitting ? "Sending..." : "Submit Enquiry"}
                     </span>
                     <Send size={16} />
                   </motion.button>
+
+                  {submitError && (
+                    <p
+                      style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.78rem", color: "#fca5a5" }}
+                      className="text-center"
+                    >
+                      {submitError}
+                    </p>
+                  )}
 
                   <p
                     style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.75rem", color: c.textMuted }}

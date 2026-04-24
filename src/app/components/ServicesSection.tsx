@@ -1,34 +1,28 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { Home, BarChart2, Briefcase, CreditCard, ArrowRight } from "lucide-react";
+import { Home, Building2, Landmark, ArrowRight } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 const c = getThemeColors();
 
 const services = [
   {
     icon: Home,
-    title: "Property Consulting",
-    desc: "Personalized guidance to find the property that perfectly aligns with your lifestyle, budget, and long-term goals.",
-    features: ["Site Visit Coordination", "Comparative Market Analysis", "Negotiation Support"],
+    title: "Residential Development",
+    desc: "Homes designed with restraint, precision, and enduring quality — spaces that feel calm, secure, and timeless.",
+    features: ["Comfort & Liveability", "Thoughtful Planning", "Material Integrity"],
   },
   {
-    icon: BarChart2,
-    title: "Investment Advisory",
-    desc: "Data-driven investment strategies to maximize ROI across residential and commercial real estate segments.",
-    features: ["Portfolio Diversification", "Rental Yield Analysis", "Capital Appreciation Forecasting"],
+    icon: Building2,
+    title: "Commercial Spaces",
+    desc: "Purpose-built environments that serve organisations with clarity of function and longevity of form.",
+    features: ["Efficiency-First Design", "Grade-A Construction", "Long-Term Relevance"],
   },
   {
-    icon: Briefcase,
-    title: "Project Management",
-    desc: "Comprehensive management of your property development lifecycle, from planning to handover.",
-    features: ["Timeline & Budget Control", "Vendor Management", "Quality Assurance"],
-  },
-  {
-    icon: CreditCard,
-    title: "Financial Assistance",
-    desc: "Seamless home loan facilitation with preferred rates through our banking partnerships.",
-    features: ["Home Loan Processing", "EMI Planning", "Tax Benefit Advisory"],
+    icon: Landmark,
+    title: "Institutional Projects",
+    desc: "Developments rooted in purpose and permanence, built to serve communities and stand the test of time.",
+    features: ["Civic Purpose", "Contextual Design", "Enduring Infrastructure"],
   },
 ];
 
@@ -53,7 +47,7 @@ export function ServicesSection() {
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
               className="uppercase"
             >
-              What We Offer
+              What We
             </span>
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
@@ -61,12 +55,18 @@ export function ServicesSection() {
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
           >
-            Our Core <span className="italic" style={{ color: c.accent }}>Services</span>
+            What We <span className="italic" style={{ color: c.accent }}>Create</span>
           </h2>
+          <p
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}
+            className="mt-5 max-w-3xl mx-auto"
+          >
+            Amaan develops spaces that serve people, institutions, and communities.
+          </p>
         </motion.div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}

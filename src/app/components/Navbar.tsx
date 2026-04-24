@@ -9,8 +9,10 @@ const c = getThemeColors();
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Approach", href: "#approach" },
   { label: "Projects", href: "#projects" },
   { label: "Gallery", href: "#gallery" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -20,9 +22,30 @@ export function Navbar() {
   const [activeLink, setActiveLink] = useState("#home");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+
+      const anchor = window.scrollY + window.innerHeight * 0.35;
+      let current = navLinks[0].href;
+
+      navLinks.forEach((link) => {
+        const section = document.querySelector<HTMLElement>(link.href);
+        if (!section) return;
+        if (anchor >= section.offsetTop) {
+          current = link.href;
+        }
+      });
+
+      setActiveLink((prev) => (prev === current ? prev : current));
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const handleNav = (href: string) => {
@@ -103,48 +126,55 @@ export function Navbar() {
 
           {/* ── Desktop links ── */}
           <nav className="hidden md:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => handleNav(link.href)}
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 500,
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  position: "relative",
-                  padding: "4px 0",
-                  color: activeLink === link.href ? (scrolled ? c.accent : "#C9A44A") : (scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"),
-                  transition: "color 0.5s",
-                }}
-                onMouseEnter={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textPrimary : "#fff"; }}
-                onMouseLeave={(e) => { if (activeLink !== link.href) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"; }}
-              >
-                {link.label}
-                {/* underline indicator */}
-                <span
+            {navLinks.map((link) => {
+              const isActive = activeLink === link.href;
+              const activeColor = scrolled ? c.accent : "#C9A44A";
+              const inactiveColor = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)";
+              const linkColor = isActive ? activeColor : inactiveColor;
+
+              return (
+                <button
+                  key={link.label}
+                  onClick={() => handleNav(link.href)}
                   style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: activeLink === link.href ? "100%" : "0%",
-                    height: 1,
-                    background: `linear-gradient(to right, ${c.accent}, rgba(${c.accentRgb},0.3))`,
-                    transition: "width 0.35s ease",
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: 500,
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    position: "relative",
+                    padding: "4px 0",
+                    color: linkColor,
+                    transition: "color 0.5s",
                   }}
-                />
-              </button>
-            ))}
+                  onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textPrimary : "#fff"; }}
+                  onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"; }}
+                >
+                  {link.label}
+                  {/* underline indicator */}
+                  <span
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      width: isActive ? "100%" : "0%",
+                      height: 1,
+                      background: `linear-gradient(to right, ${c.accent}, rgba(${c.accentRgb},0.3))`,
+                      transition: "width 0.35s ease",
+                    }}
+                  />
+                </button>
+              );
+            })}
           </nav>
 
           {/* ── Desktop CTA ── */}
           <div className="hidden md:flex items-center gap-5">
             <a
-              href="tel:9540005050"
+              href="tel:+919000090000"
               className="flex items-center gap-2 group"
               style={{ textDecoration: "none" }}
             >
@@ -174,7 +204,7 @@ export function Navbar() {
                 }}
                 className="group-hover:text-[var(--t-accent)]"
               >
-                9540005050
+                9000090000
               </span>
             </a>
 
@@ -299,7 +329,7 @@ export function Navbar() {
                 className="mt-6 flex flex-col items-center gap-3"
               >
                 <a
-                  href="tel:9540005050"
+                  href="tel:+919000090000"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "0.8rem",
@@ -312,7 +342,7 @@ export function Navbar() {
                   }}
                 >
                   <Phone size={14} />
-                  9540005050
+                  9000090000
                 </a>
                 <button
                   onClick={() => handleNav("#contact")}

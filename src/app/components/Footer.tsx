@@ -11,11 +11,11 @@ const quickLinks = [
 ];
 
 const services = [
-  "Property Consulting",
-  "Investment Advisory",
-  "Project Management",
-  "Financial Assistance",
-  "Commercial Real Estate",
+  "Residential Development",
+  "Commercial Spaces",
+  "Institutional Projects",
+  "Architecture & Design",
+  "Construction Management",
 ];
 
 const socials = [
@@ -63,7 +63,7 @@ export function Footer() {
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.8, color: c.textMuted }}
               className="mb-6"
             >
-              India's most trusted real estate advisory, guiding salaried professionals, real estate investors, and commercial buyers to make confident property decisions since 2010.
+              A development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces — guided by clarity of design and strength of construction.
             </p>
             <div className="flex items-center gap-3">
               {socials.map(({ Icon, href, label }) => (
@@ -146,13 +146,13 @@ export function Footer() {
               Contact Us
             </h4>
             <div className="space-y-4">
-              <a href="tel:9540005050" className="flex items-start gap-3 group">
+              <a href="tel:+919000090000" className="flex items-start gap-3 group">
                 <Phone size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">+91 95400 05050</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">+91 9000090000</span>
               </a>
-              <a href="mailto:info@amaanindia.com" className="flex items-start gap-3 group">
+              <a href="mailto:connect@amaanindia.com" className="flex items-start gap-3 group">
                 <Mail size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">info@amaanindia.com</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">connect@amaanindia.com</span>
               </a>
               <div className="flex items-start gap-3">
                 <MapPin size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
