@@ -21,11 +21,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const appRef = useRef<HTMLDivElement>(null);
-  const isDashboardRoute =
-    typeof globalThis.window !== "undefined" && globalThis.window.location.pathname.startsWith("/dashboard");
+  const hasWindow = typeof globalThis.window !== "undefined";
+  const dashboardEnabled = import.meta.env.VITE_ENABLE_DASHBOARD === "true";
+  const isDashboardRoute = hasWindow && globalThis.window.location.pathname.startsWith("/dashboard");
 
   useEffect(() => {
-    if (isDashboardRoute || !appRef.current) return;
+    if ((dashboardEnabled && isDashboardRoute) || !appRef.current) return;
 
     const ctx = gsap.context(() => {
       const sections = gsap.utils.toArray<HTMLElement>("[data-scroll-section]");
@@ -89,9 +90,9 @@ export default function App() {
     return () => {
       ctx.revert();
     };
-  }, [isDashboardRoute]);
+  }, [dashboardEnabled, isDashboardRoute]);
 
-  if (isDashboardRoute) {
+  if (dashboardEnabled && isDashboardRoute) {
     return <DashboardPage />;
   }
 

@@ -1,7 +1,7 @@
-import { motion } from "motion/react";
-import { useInView } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { CalendarDays, PenLine, UserRound } from "lucide-react";
+import { createPortal } from "react-dom";
+import { CalendarDays, PenLine, UserRound, X } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 import { fetchBlogs, type Blog } from "../lib/api";
 
@@ -13,8 +13,11 @@ const fallbackBlogs: Blog[] = [
     title: "Designing Spaces That Stay Relevant",
     excerpt:
       "Amaan focuses on clarity, restraint, and proportion to create environments that feel refined today and remain meaningful over time.",
-    content:
-      "Amaan focuses on clarity, restraint, and proportion to create environments that feel refined today and remain meaningful over time.",
+    content: `True architectural relevance is rarely loud. It is built through disciplined proportions, material continuity, and spaces that support real life over many years. At Amaan, design begins with intent and evolves through a process that balances functionality with lasting visual calm.
+
+We believe people should feel immediately grounded in the environments they inhabit. This means clear circulation, natural light where it matters most, and details that reduce visual noise rather than add it.
+
+When development is approached with restraint and precision, spaces do not just impress at launch - they continue to feel complete, coherent, and contemporary over time.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
@@ -23,8 +26,11 @@ const fallbackBlogs: Blog[] = [
     title: "Material Integrity as a Long-Term Strategy",
     excerpt:
       "From structure to finish, every decision is made with durability and lifecycle value in mind to ensure each project ages gracefully.",
-    content:
-      "From structure to finish, every decision is made with durability and lifecycle value in mind to ensure each project ages gracefully.",
+    content: `Material selection is not only an aesthetic decision. It is a long-term commitment that determines how well a space performs through daily use, seasonal change, and time. At Amaan, we evaluate finishes, systems, and construction assemblies through a lifecycle lens.
+
+Our focus is to build environments that remain dependable and elegant, not just visually strong at handover. This includes practical detailing, robust structural choices, and execution standards that reduce long-term maintenance stress.
+
+In our approach, quality is not an upgrade. It is the baseline that protects value, preserves design integrity, and strengthens user trust for years ahead.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
@@ -33,12 +39,22 @@ const fallbackBlogs: Blog[] = [
     title: "Purposeful Development Across Typologies",
     excerpt:
       "Residential, commercial, and institutional projects each demand different priorities, but all are guided by intent, precision, and relevance.",
-    content:
-      "Residential, commercial, and institutional projects each demand different priorities, but all are guided by intent, precision, and relevance.",
+    content: `Each project typology has its own demands. Residential spaces prioritize comfort and liveability. Commercial environments require efficiency and adaptability. Institutional developments must support purpose with clarity and permanence.
+
+At Amaan, we do not force one template across all categories. Instead, we apply a unified methodology: clear briefing, contextual design, and execution discipline tailored to the project's role and users.
+
+This is how we create developments that are not only functional in the present, but also durable in relevance - serving people, institutions, and communities with confidence.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
 ];
+
+function splitContent(content: string) {
+  return content
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+}
 
 function formatDate(date: string) {
   const parsed = new Date(date);
@@ -56,6 +72,8 @@ export function BlogSection() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [activeBlog, setActiveBlog] = useState<Blog | null>(null);
+  const hasDom = globalThis.document !== undefined;
 
   useEffect(() => {
     let active = true;
@@ -90,6 +108,26 @@ export function BlogSection() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!activeBlog) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveBlog(null);
+      }
+    };
+
+    globalThis.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      globalThis.removeEventListener("keydown", handleEsc);
+    };
+  }, [activeBlog]);
 
   return (
     <section id="blog" className="py-24" style={{ background: c.sectionWhite }}>
@@ -161,13 +199,15 @@ export function BlogSection() {
           {!loading && (
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
               {blogs.map((blog, idx) => (
-                <motion.article
+                <motion.button
                   key={blog.id}
+                  type="button"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.55, delay: idx * 0.08 }}
-                  className="relative p-8 group"
+                  className="relative p-8 group text-left"
                   style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
+                  onClick={() => setActiveBlog(blog)}
                 >
                   <div
                     className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"
@@ -203,7 +243,20 @@ export function BlogSection() {
                   <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.88rem", lineHeight: 1.75, color: c.textSecondary }}>
                     {blog.excerpt}
                   </p>
-                </motion.article>
+
+                  <span
+                    style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontWeight: 500,
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.14em",
+                      color: c.accent,
+                    }}
+                    className="uppercase inline-block mt-5"
+                  >
+                    Read Full Article
+                  </span>
+                </motion.button>
               ))}
 
               {!blogs.length && (
@@ -213,6 +266,85 @@ export function BlogSection() {
               )}
             </div>
           )}
+
+          {hasDom &&
+            createPortal(
+              <AnimatePresence>
+                {activeBlog && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-[300] grid place-items-center p-4 md:p-8"
+                  >
+                    <button
+                      type="button"
+                      className="absolute inset-0"
+                      style={{ background: "rgba(6, 12, 9, 0.78)", backdropFilter: "blur(7px)" }}
+                      onClick={() => setActiveBlog(null)}
+                      aria-label="Close blog overlay"
+                    />
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 16, scale: 0.98 }}
+                      transition={{ duration: 0.28, ease: "easeOut" }}
+                      className="relative w-full max-w-4xl max-h-[88vh] overflow-hidden"
+                      style={{ background: c.cardBg, border: `1px solid ${c.borderMedium}` }}
+                    >
+                      <div className="px-7 md:px-10 py-6 border-b" style={{ borderColor: c.borderSubtle }}>
+                        <div className="flex items-start justify-between gap-6">
+                          <div>
+                            <div className="flex items-center gap-3 mb-3">
+                              <span className="inline-flex items-center gap-1" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.76rem", color: c.textMuted }}>
+                                <CalendarDays size={12} />
+                                {formatDate(activeBlog.created_at)}
+                              </span>
+                              <span style={{ color: c.borderMedium }}>•</span>
+                              <span className="inline-flex items-center gap-1" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.76rem", color: c.textMuted }}>
+                                <UserRound size={12} />
+                                {activeBlog.author}
+                              </span>
+                            </div>
+
+                            <h3
+                              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, lineHeight: 1.3, color: c.textPrimary }}
+                              className="text-2xl md:text-3xl"
+                            >
+                              {activeBlog.title}
+                            </h3>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setActiveBlog(null)}
+                            aria-label="Close"
+                            className="w-10 h-10 flex items-center justify-center shrink-0"
+                            style={{ border: `1px solid ${c.borderSubtle}`, color: c.textSecondary }}
+                          >
+                            <X size={18} />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="px-7 md:px-10 py-7 overflow-auto max-h-[calc(88vh-140px)]">
+                        {splitContent(activeBlog.content).map((paragraph) => (
+                          <p
+                            key={paragraph.slice(0, 40)}
+                            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.96rem", lineHeight: 1.95, color: c.textSecondary }}
+                            className="mb-5"
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>,
+              globalThis.document.body,
+            )}
         </motion.div>
       </div>
     </section>

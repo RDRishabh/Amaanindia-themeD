@@ -5,17 +5,10 @@ import { getThemeColors } from "../../styles/themes";
 const quickLinks = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
+  { label: "Our Approach", href: "#approach" },
   { label: "Our Projects", href: "#projects" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
-];
-
-const services = [
-  "Residential Development",
-  "Commercial Spaces",
-  "Institutional Projects",
-  "Architecture & Design",
-  "Construction Management",
 ];
 
 const socials = [
@@ -29,20 +22,20 @@ const socials = [
 export function Footer() {
   const c = getThemeColors();
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   const handleNav = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <footer style={{ background: c.sectionDark, borderTop: `1px solid ${c.borderSubtle}` }}>
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
+    <footer className="relative overflow-hidden" style={{ background: c.sectionDark, borderTop: `1px solid ${c.borderSubtle}` }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-12 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
+          {/* Brand */}
+          <div>
             <div className="flex items-center gap-3 mb-6">
-              <div style={{ width: 52, height: 52, flexShrink: 0 }}>
+              <div style={{ width: 54, height: 54, flexShrink: 0 }}>
                 <img
                   src={logoImg}
                   alt="Amaan India"
@@ -55,16 +48,22 @@ export function Footer() {
                 />
               </div>
               <div>
-                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "0.05em", color: c.textPrimary }}>AMAAN</div>
-                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.25em", color: c.accent }}>INDIA</div>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.08rem", letterSpacing: "0.05em", color: c.textPrimary }}>
+                  AMAAN
+                </div>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.24em", color: c.accent }}>
+                  INDIA
+                </div>
               </div>
             </div>
+
             <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.8, color: c.textMuted }}
-              className="mb-6"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.93rem", lineHeight: 1.75, color: c.textMuted }}
+              className="max-w-xl mb-7"
             >
-              A development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces — guided by clarity of design and strength of construction.
+              A development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces - guided by clarity of design and strength of construction.
             </p>
+
             <div className="flex items-center gap-3">
               {socials.map(({ Icon, href, label }) => (
                 <a
@@ -72,19 +71,17 @@ export function Footer() {
                   href={href}
                   aria-label={label}
                   className="w-8 h-8 flex items-center justify-center transition-all duration-300"
-                  style={{ border: `1px solid ${c.borderMedium}`, color: c.textMuted }}
+                  style={{ color: c.textMuted }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = c.accent;
                     el.style.color = c.accent;
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = c.borderMedium;
                     el.style.color = c.textMuted;
                   }}
                 >
-                  <Icon size={14} />
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
@@ -94,7 +91,7 @@ export function Footer() {
           <div>
             <h4
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
-              className="uppercase mb-6"
+              className="uppercase mb-5"
             >
               Quick Links
             </h4>
@@ -103,34 +100,10 @@ export function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => handleNav(link.href)}
-                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }}
-                    className="hover:text-[var(--t-accent)] transition-colors duration-300 flex items-center gap-2 group"
+                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.9rem", color: c.textMuted }}
+                    className="hover:text-[var(--t-accent)] transition-colors duration-300"
                   >
-                    <span className="w-4 h-px bg-[var(--t-border-medium)] group-hover:bg-[var(--t-accent)] group-hover:w-6 transition-all duration-300" />
                     {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
-              className="uppercase mb-6"
-            >
-              Our Services
-            </h4>
-            <ul className="space-y-3">
-              {services.map((svc) => (
-                <li key={svc}>
-                  <button
-                    style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }}
-                    className="hover:text-[var(--t-accent)] transition-colors duration-300 flex items-center gap-2 group text-left"
-                  >
-                    <span className="w-4 h-px bg-[var(--t-border-medium)] group-hover:bg-[var(--t-accent)] group-hover:w-6 transition-all duration-300" />
-                    {svc}
                   </button>
                 </li>
               ))}
@@ -141,54 +114,66 @@ export function Footer() {
           <div>
             <h4
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
-              className="uppercase mb-6"
+              className="uppercase mb-5"
             >
               Contact Us
             </h4>
             <div className="space-y-4">
               <a href="tel:+919000090000" className="flex items-start gap-3 group">
-                <Phone size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">+91 9000090000</span>
+                <Phone size={15} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.95rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">
+                  +91 9000090000
+                </span>
               </a>
               <a href="mailto:connect@amaanindia.com" className="flex items-start gap-3 group">
-                <Mail size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">connect@amaanindia.com</span>
+                <Mail size={15} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.95rem", color: c.textMuted }} className="group-hover:text-[var(--t-text-primary)] transition-colors">
+                  connect@amaanindia.com
+                </span>
               </a>
               <div className="flex items-start gap-3">
-                <MapPin size={14} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.85rem", lineHeight: 1.6, color: c.textMuted }}>304, DLF Corporate Park,<br />Sector 74A, Gurugram, HR 122004</span>
+                <MapPin size={15} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.9rem", lineHeight: 1.6, color: c.textMuted }}>
+                  304, DLF Corporate Park,
+                  <br />
+                  Sector 74A, Gurugram, HR 122004
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div style={{ borderTop: `1px solid ${c.borderSubtle}` }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }}
           >
             © {new Date().getFullYear()} Amaan India. All rights reserved. | RERA Registered
           </p>
+
           <div className="flex items-center gap-6">
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">Privacy Policy</button>
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">Terms of Use</button>
+            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">
+              Privacy Policy
+            </button>
+            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">
+              Terms of Use
+            </button>
           </div>
+
           <button
             onClick={scrollTop}
             className="w-9 h-9 flex items-center justify-center transition-all duration-300"
-            style={{ border: `1px solid ${c.borderMedium}`, color: c.textMuted }}
+            style={{ color: c.textMuted }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement;
-              el.style.borderColor = c.accent;
               el.style.color = c.accent;
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLElement;
-              el.style.borderColor = c.borderMedium;
               el.style.color = c.textMuted;
             }}
+            aria-label="Back to top"
           >
             <ArrowUp size={16} />
           </button>
