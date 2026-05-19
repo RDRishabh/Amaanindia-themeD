@@ -18,7 +18,7 @@ const pillars = [
   },
   {
     icon: Users,
-    title: "Built to Age Gracefully",
+    title: "So Every Property Endures The Test Of Time",
     desc: "We build with material integrity and long-term relevance in mind, so every environment endures beyond its first impression.",
   },
 ];
