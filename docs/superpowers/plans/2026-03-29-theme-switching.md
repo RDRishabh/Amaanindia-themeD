@@ -4,7 +4,7 @@
 
 **Goal:** Replace hardcoded gold/dark colors with a config-driven system supporting three premium themes (A=Light Navy, B=Dark Platinum, C=Warm Sage) switchable by changing one value in `src/config/theme.config.ts`.
 
-**Architecture:** A `ThemeTokens` object is defined for each theme in `themes.ts`. `main.tsx` injects a small set as CSS custom properties on `:root` (for Tailwind `var()` class syntax). Components call `getThemeColors()` directly for rgba values, inline styles, and complex tokens like nav shadow, avatar colors, and map filter.
+**Architecture:** A `ThemeTokens` object is defined for each theme in `themes.ts`. `main.tsx` injects a small set as CSS custom properties on `:root` (for Tailwind `var()` class syntax). Components call `getThemeColors()` directly for rgba values, inline styles and complex tokens like nav shadow, avatar colors and map filter.
 
 **Tech Stack:** React, TypeScript, Tailwind CSS v4, Vite
 
@@ -1090,7 +1090,7 @@ const c = getThemeColors();
 // OLD color values in testimonials array: "#C9A84C", "#8B6914", "#5a4a28"
 // These are defined at module level, so move them inside the component or make them dynamic:
 
-// Change the testimonials array to not include color, and derive it from theme:
+// Change the testimonials array to not include color and derive it from theme:
 const testimonials = [
   { name: "Rajiv Sharma", role: "Senior IT Professional, Noida", rating: 5, text: "...", initials: "RS" },
   { name: "Priya Kapoor", role: "Entrepreneur & Investor, Delhi", rating: 5, text: "...", initials: "PK" },

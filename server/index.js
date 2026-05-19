@@ -108,19 +108,19 @@ async function ensureDefaultBlogs() {
     {
       title: "Designing Calm in Urban Environments",
       content:
-        "True luxury in contemporary development is not excess, but clarity. At Amaan, our planning process focuses on proportion, daylight, circulation, and material consistency to create environments that feel composed and restorative.",
+        "True luxury in contemporary development is not excess, but clarity. At Amaan, our planning process focuses on proportion, daylight, circulation and material consistency to create environments that feel composed and restorative.",
       author: "Amaan Editorial",
     },
     {
       title: "How Material Integrity Creates Long-Term Value",
       content:
-        "Construction decisions have long-term consequences. Durable finishes, robust structural choices, and practical detailing help reduce lifecycle costs while preserving aesthetic quality. This is central to our development philosophy.",
+        "Construction decisions have long-term consequences. Durable finishes, robust structural choices and practical detailing help reduce lifecycle costs while preserving aesthetic quality. This is central to our development philosophy.",
       author: "Amaan Editorial",
     },
     {
-      title: "Residential, Commercial, and Institutional: A Unified Approach",
+      title: "Residential, Commercial and Institutional: A Unified Approach",
       content:
-        "Different typologies require different functional priorities, but the foundation remains the same: intentional planning, disciplined execution, and contextual design. We apply these principles across all project categories.",
+        "Different typologies require different functional priorities, but the foundation remains the same: intentional planning, disciplined execution and contextual design. We apply these principles across all project categories.",
       author: "Amaan Editorial",
     },
     {
@@ -185,7 +185,7 @@ app.post("/api/contact", async (req, res) => {
   const { name, phone, email, interest = "", message = "" } = req.body || {};
 
   if (!name || !phone || !email) {
-    return res.status(400).json({ error: "Name, phone, and email are required." });
+    return res.status(400).json({ error: "Name, phone and email are required." });
   }
 
   try {

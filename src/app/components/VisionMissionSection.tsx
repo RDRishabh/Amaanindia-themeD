@@ -17,7 +17,7 @@ const identityBlocks = [
   },
   {
     title: "Quiet Confidence",
-    desc: "Understated luxury expressed through precision, restraint, and purposeful design.",
+    desc: "Understated luxury expressed through precision, restraint and purposeful design.",
   },
 ];
 
@@ -25,15 +25,15 @@ const directionBlocks = [
   {
     id: "01",
     title: "Vision",
-    text: "To redefine modern living with elegance, innovation, and purpose.",
-    support: "Design-led thinking for spaces that remain relevant, graceful, and future-ready.",
+    text: "To redefine modern living with elegance, innovation and purpose.",
+    support: "Design-led thinking for spaces that remain relevant, graceful and future-ready.",
     icon: Eye,
   },
   {
     id: "02",
     title: "Mission",
-    text: "To build with integrity, design with intent, and deliver with excellence.",
-    support: "Execution anchored in quality, collaboration, and long-term value creation.",
+    text: "To build with integrity, design with intent and deliver with excellence.",
+    support: "Execution anchored in quality, collaboration and long-term value creation.",
     icon: Target,
   },
 ];
@@ -86,13 +86,13 @@ export function VisionMissionSection() {
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
               className="mb-5"
             >
-              Amaan stands for peace, assurance, and quiet confidence. In luxury living, it reflects homes designed with restraint, precision, and enduring quality - spaces that feel calm, secure, and timeless.
+              Amaan stands for peace, assurance and quiet confidence. In luxury living, it reflects homes designed with restraint, precision and enduring quality - spaces that feel calm, secure and timeless.
             </p>
             <p
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
               className="mb-8"
             >
-              At Amaan, luxury is understated. It is found in thoughtful architecture, refined construction, and residences built to last.
+              At Amaan, luxury is understated. It is found in thoughtful architecture, refined construction and residences built to last.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-3">

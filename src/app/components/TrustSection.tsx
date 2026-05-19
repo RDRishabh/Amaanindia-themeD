@@ -8,7 +8,7 @@ const c = getThemeColors();
 const pillars = [
   {
     icon: Award,
-    title: "Architecturally Considered",
+    title: "Architectural Precision",
     desc: "Every project is shaped through close collaboration with renowned architects, ensuring each space is refined in design and resolved in detail.",
   },
   {

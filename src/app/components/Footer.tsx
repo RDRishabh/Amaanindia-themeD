@@ -61,7 +61,7 @@ export function Footer() {
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.93rem", lineHeight: 1.75, color: c.textMuted }}
               className="max-w-xl mb-7"
             >
-              A development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces - guided by clarity of design and strength of construction.
+              A development firm committed to creating thoughtful, enduring environments across residential, commercial and institutional spaces - guided by clarity of design and strength of construction.
             </p>
 
             <div className="flex items-center gap-3">

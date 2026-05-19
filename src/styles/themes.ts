@@ -301,6 +301,55 @@ const themes: Record<ThemeKey, ThemeTokens> = {
     selectionText: '#FFFFF0',
     logoFilter: 'none',
   },
+  // ── Theme F: Ultra Light Cream (Editorial Luxury / Minimal Beige) ──
+  F: {
+    accent: '#2C4A3A',
+    accentHover: '#1E3528',
+    accentLight: '#3D6B57',
+    accentRgb: '122,106,88',
+    onAccent: '#FFFDF8',
+
+    // Core cream palette
+    sectionDark: '#F4EEE2',   // Soft editorial beige
+    sectionMid: '#FAF5EB',    // Warm premium cream
+    sectionLight: '#FFFDF8',  // Ultra minimal luxury UI
+    sectionWhite: '#FFFFFF',
+
+    cardBg: '#FFFDF8',
+    cardBgSubtle: '#FAF5EB',
+    inputBg: '#FAF5EB',
+
+    navScrolledBg: 'rgba(255,253,248,0.96)',
+    navShadow: '0 1px 0 rgba(122,106,88,0.10), 0 8px 40px rgba(0,0,0,0.06)',
+    mobileMenuBg: 'rgba(255,253,248,0.98)',
+
+    textPrimary: '#1F1A17',
+    textSecondary: 'rgba(31,26,23,0.62)',
+    textMuted: 'rgba(31,26,23,0.80)',
+
+    borderMedium: 'rgba(31,26,23,0.12)',
+    borderSubtle: 'rgba(31,26,23,0.07)',
+
+    ctaOverlayStart: 'rgba(250,245,235,0.95)',
+    ctaOverlayMid: 'rgba(250,245,235,0.85)',
+    ctaOverlayEnd: 'rgba(250,245,235,0.60)',
+
+    galleryOverlay: 'rgba(31,26,23,0)',
+
+    glowColor: 'rgba(122,106,88,0.08)',
+
+    avatarColors: ['#7A6A58', '#9C8A76', '#C6B7A3'],
+
+    mapFilter: 'none',
+
+    scrollbarTrack: '#FAF5EB',
+    scrollbarThumb: '#7A6A58',
+
+    selectionBg: '#7A6A58',
+    selectionText: '#FFFDF8',
+
+    logoFilter: 'none',
+  },
 };
 
 export function getThemeColors(): ThemeTokens {

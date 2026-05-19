@@ -440,8 +440,8 @@ export function HeroSection() {
             {/* Headline – each line in its own overflow:hidden clip */}
             <div>
               {[
-                { text: "Quietly Defining",   style: { color: "#FFFFFF",   fontStyle: "normal" as const } },
-                { text: "Enduring Spaces",    style: { color: "#C9A44A",   fontStyle: "italic"  as const } },
+                { text: "Timeless Spaces",   style: { color: "#FFFFFF",   fontStyle: "normal" as const } },
+                { text: "Thoughtfully Built",    style: { color: "#C9A44A",   fontStyle: "italic"  as const } },
               ].map((line, i) => (
                 <div key={i} className="hero-title-wrap overflow-hidden" style={{ lineHeight: 1 }}>
                   <div
@@ -476,9 +476,9 @@ export function HeroSection() {
                 textShadow: "0 1px 8px rgba(0,0,0,0.45)",
               }}
             >
-              Amaan is a development firm committed to creating thoughtful, enduring environments across residential, commercial, and institutional spaces. Our work is guided by clarity of design, strength of construction, and a long-term view of value.
+              Amaan is a development firm committed to creating thoughtful, enduring environments across residential, commercial and institutional spaces. Our work is guided by clarity of design, strength of construction and a long-term view of value.
               <br className="hidden md:block" />
-              We believe quality is timeless - and luxury is found in restraint, precision, and purpose.
+              We believe quality is timeless - and luxury is found in restraint, precision and purpose.
             </p>
 
             {/* CTA buttons */}

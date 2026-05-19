@@ -62,7 +62,7 @@ export function AmenitiesSection() {
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.8, color: c.textSecondary }}
             className="mt-4 max-w-xl mx-auto"
           >
-            Every Amaan development is curated with amenities that reflect restraint, purpose, and long-term liveability.
+            Every Amaan development is curated with amenities that reflect restraint, purpose and long-term liveability.
           </p>
         </motion.div>
 

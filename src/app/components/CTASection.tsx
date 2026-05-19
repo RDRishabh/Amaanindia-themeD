@@ -54,13 +54,13 @@ export function CTASection() {
 
             <div className="space-y-5 mb-12 max-w-2xl">
               <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
-                Amaan was founded on a simple belief: that well‑designed, well‑built spaces have a lasting impact on how people live, work, and engage with their surroundings.
+                Amaan was founded on a simple belief: that well‑designed, well‑built spaces have a lasting impact on how people live, work and engage with their surroundings.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
-                From the outset, the intention has never been to build for scale alone, but to build with care — placing architecture, construction quality, and long‑term relevance at the centre of every decision. Each project is approached with restraint, clarity, and respect for context, guided by collaboration with accomplished architects and trusted construction partners.
+                From the outset, the intention has never been to build for scale alone, but to build with care — placing architecture, construction quality and long‑term relevance at the centre of every decision. Each project is approached with restraint, clarity and respect for context, guided by collaboration with accomplished architects and trusted construction partners.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}>
-                At Amaan, luxury is not defined by excess, but by assurance — the confidence that comes from thoughtful planning, refined execution, and spaces built to endure.
+                At Amaan, luxury is not defined by excess, but by assurance — the confidence that comes from thoughtful planning, refined execution and spaces built to endure.
               </p>
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.88rem", letterSpacing: "0.05em", color: c.accent }}>
                 This commitment continues to shape everything we create.

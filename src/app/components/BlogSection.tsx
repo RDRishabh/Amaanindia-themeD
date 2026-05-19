@@ -12,12 +12,12 @@ const fallbackBlogs: Blog[] = [
     id: -1,
     title: "Designing Spaces That Stay Relevant",
     excerpt:
-      "Amaan focuses on clarity, restraint, and proportion to create environments that feel refined today and remain meaningful over time.",
-    content: `True architectural relevance is rarely loud. It is built through disciplined proportions, material continuity, and spaces that support real life over many years. At Amaan, design begins with intent and evolves through a process that balances functionality with lasting visual calm.
+      "Amaan focuses on clarity, restraint and proportion to create environments that feel refined today and remain meaningful over time.",
+    content: `True architectural relevance is rarely loud. It is built through disciplined proportions, material continuity and spaces that support real life over many years. At Amaan, design begins with intent and evolves through a process that balances functionality with lasting visual calm.
 
-We believe people should feel immediately grounded in the environments they inhabit. This means clear circulation, natural light where it matters most, and details that reduce visual noise rather than add it.
+We believe people should feel immediately grounded in the environments they inhabit. This means clear circulation, natural light where it matters most and details that reduce visual noise rather than add it.
 
-When development is approached with restraint and precision, spaces do not just impress at launch - they continue to feel complete, coherent, and contemporary over time.`,
+When development is approached with restraint and precision, spaces do not just impress at launch - they continue to feel complete, coherent and contemporary over time.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
@@ -26,11 +26,11 @@ When development is approached with restraint and precision, spaces do not just 
     title: "Material Integrity as a Long-Term Strategy",
     excerpt:
       "From structure to finish, every decision is made with durability and lifecycle value in mind to ensure each project ages gracefully.",
-    content: `Material selection is not only an aesthetic decision. It is a long-term commitment that determines how well a space performs through daily use, seasonal change, and time. At Amaan, we evaluate finishes, systems, and construction assemblies through a lifecycle lens.
+    content: `Material selection is not only an aesthetic decision. It is a long-term commitment that determines how well a space performs through daily use, seasonal change and time. At Amaan, we evaluate finishes, systems and construction assemblies through a lifecycle lens.
 
-Our focus is to build environments that remain dependable and elegant, not just visually strong at handover. This includes practical detailing, robust structural choices, and execution standards that reduce long-term maintenance stress.
+Our focus is to build environments that remain dependable and elegant, not just visually strong at handover. This includes practical detailing, robust structural choices and execution standards that reduce long-term maintenance stress.
 
-In our approach, quality is not an upgrade. It is the baseline that protects value, preserves design integrity, and strengthens user trust for years ahead.`,
+In our approach, quality is not an upgrade. It is the baseline that protects value, preserves design integrity and strengthens user trust for years ahead.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
@@ -38,12 +38,12 @@ In our approach, quality is not an upgrade. It is the baseline that protects val
     id: -3,
     title: "Purposeful Development Across Typologies",
     excerpt:
-      "Residential, commercial, and institutional projects each demand different priorities, but all are guided by intent, precision, and relevance.",
+      "Residential, commercial and institutional projects each demand different priorities, but all are guided by intent, precision and relevance.",
     content: `Each project typology has its own demands. Residential spaces prioritize comfort and liveability. Commercial environments require efficiency and adaptability. Institutional developments must support purpose with clarity and permanence.
 
-At Amaan, we do not force one template across all categories. Instead, we apply a unified methodology: clear briefing, contextual design, and execution discipline tailored to the project's role and users.
+At Amaan, we do not force one template across all categories. Instead, we apply a unified methodology: clear briefing, contextual design and execution discipline tailored to the project's role and users.
 
-This is how we create developments that are not only functional in the present, but also durable in relevance - serving people, institutions, and communities with confidence.`,
+This is how we create developments that are not only functional in the present, but also durable in relevance - serving people, institutions and communities with confidence.`,
     author: "Amaan Editorial",
     created_at: new Date().toISOString(),
   },
@@ -168,7 +168,7 @@ export function BlogSection() {
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.9, color: c.textSecondary }}
               className="max-w-4xl mx-auto"
             >
-              At the intersection of innovation and elegance, Amaan India reimagines modern real estate through purposeful design, superior craftsmanship, and a commitment to delivering enduring value.
+              At the intersection of innovation and elegance, Amaan India reimagines modern real estate through purposeful design, superior craftsmanship and a commitment to delivering enduring value.
             </p>
           </div>
 

@@ -9,7 +9,7 @@ const services = [
   {
     icon: Home,
     title: "Residential Development",
-    desc: "Homes designed with restraint, precision, and enduring quality — spaces that feel calm, secure, and timeless.",
+    desc: "Homes designed with restraint, precision and enduring quality — spaces that feel calm, secure and timeless.",
     features: ["Comfort & Liveability", "Thoughtful Planning", "Material Integrity"],
   },
   {
@@ -41,7 +41,7 @@ export function ServicesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
+          {/* <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-10" style={{ background: c.accent }} />
             <span
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
@@ -50,7 +50,7 @@ export function ServicesSection() {
               What We
             </span>
             <div className="h-px w-10" style={{ background: c.accent }} />
-          </div>
+          </div> */}
           <h2
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.15, color: c.textPrimary }}
             className="text-4xl md:text-5xl"
@@ -61,7 +61,7 @@ export function ServicesSection() {
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.85, color: c.textSecondary }}
             className="mt-5 max-w-3xl mx-auto"
           >
-            Amaan develops spaces that serve people, institutions, and communities.
+            Amaan develops spaces that serve people, institutions and communities.
           </p>
         </motion.div>
 
