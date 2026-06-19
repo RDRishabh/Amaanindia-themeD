@@ -16,6 +16,10 @@ import { ContactSection } from "./components/ContactSection";
 import { BlogSection } from "./components/BlogSection";
 import { DashboardPage } from "./components/DashboardPage";
 import { Footer } from "./components/Footer";
+import { CookieBanner } from "./components/CookieBanner";
+import { FloatingActions } from "./components/FloatingActions";
+import { CookiePolicyPage } from "./components/CookiePolicyPage";
+import { AssistancePopup } from "./components/AssistancePopup";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,9 +28,10 @@ export default function App() {
   const hasWindow = typeof globalThis.window !== "undefined";
   const dashboardEnabled = import.meta.env.VITE_ENABLE_DASHBOARD === "true";
   const isDashboardRoute = hasWindow && globalThis.window.location.pathname.startsWith("/dashboard");
+  const isCookiePolicyRoute = hasWindow && (globalThis.window.location.pathname === "/cookie-policy" || globalThis.window.location.pathname === "/cookie-policy/");
 
   useEffect(() => {
-    if ((dashboardEnabled && isDashboardRoute) || !appRef.current) return;
+    if ((dashboardEnabled && isDashboardRoute) || isCookiePolicyRoute || !appRef.current) return;
 
     const ctx = gsap.context(() => {
       const sections = gsap.utils.toArray<HTMLElement>("[data-scroll-section]");
@@ -96,6 +101,10 @@ export default function App() {
     return <DashboardPage />;
   }
 
+  if (isCookiePolicyRoute) {
+    return <CookiePolicyPage />;
+  }
+
   return (
     <div
       ref={appRef}
@@ -162,6 +171,9 @@ export default function App() {
           <Footer />
         </div>
       </div>
+      <CookieBanner />
+      <FloatingActions />
+      <AssistancePopup />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { Award, Users, TrendingUp } from "lucide-react";
+import { Award, Building, Compass, ShieldCheck, Heart, Sparkles } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 const c = getThemeColors();
 
@@ -9,17 +9,32 @@ const pillars = [
   {
     icon: Award,
     title: "Architectural Precision",
-    desc: "Every project is shaped through close collaboration with renowned architects, ensuring each space is refined in design and resolved in detail.",
+    desc: "Design shaped through thoughtful planning, expert detailing and collaboration with renowned architects. Every proportion, line and material choice is intentional.",
   },
   {
-    icon: TrendingUp,
-    title: "Functionally Efficient",
-    desc: "Spaces are designed to serve people well — planned for how they are actually used, not simply how they appear.",
+    icon: Building,
+    title: "Construction Precision",
+    desc: "We work with the finest construction partners, contractors and engineering teams. Our execution is defined by structural discipline, material integrity and rigorous on‑site quality control.",
   },
   {
-    icon: Users,
-    title: "Build to Age Gracefully",
-    desc: "So every property endures the test of time.",
+    icon: Compass,
+    title: "Purpose‑Led Functionality",
+    desc: "Spaces crafted for how people truly live, work and interact — not just how they appear. Layouts are optimized for light, movement, efficiency and comfort.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Built to Age Gracefully",
+    desc: "Developments engineered for longevity and long‑term performance. We build for generations, ensuring every property stands the test of time.",
+  },
+  {
+    icon: Heart,
+    title: "Material Honesty",
+    desc: "Authentic, durable materials selected for their integrity and the way they age over time.",
+  },
+  {
+    icon: Sparkles,
+    title: "Future‑Ready Thinking",
+    desc: "Sustainability, technology and adaptability integrated into every project to ensure relevance for decades",
   },
 ];
 
@@ -33,9 +48,9 @@ export function TrustSection() {
   const { ref, isInView } = useAnimateInView();
 
   return (
-    <section id="approach" className="py-28 overflow-hidden" style={{ background: c.sectionLight }}>
+    <section id="approach" className="py-28" style={{ background: c.sectionLight }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[1fr_1.08fr] gap-14 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.08fr] gap-14 lg:gap-20">
 
           {/* ── Left: Brand text ── */}
           <motion.div
@@ -43,13 +58,13 @@ export function TrustSection() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="max-w-2xl"
+            className="max-w-2xl lg:sticky lg:top-[100px] lg:self-start h-fit lg:max-h-[calc(100vh-130px)] lg:overflow-y-auto pr-3"
           >
             {/* Overline */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3">
               <div className="h-px w-10" style={{ background: c.accent }} />
               <span
-                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.68rem", letterSpacing: "0.25em", color: c.accent }}
                 className="uppercase"
               >
                 Our Approach
@@ -58,23 +73,31 @@ export function TrustSection() {
 
             {/* Heading */}
             <h2
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.12, color: c.textPrimary }}
-              className="text-4xl md:text-5xl mb-8"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.2, color: c.textPrimary }}
+              className="text-2xl md:text-3xl mb-3"
             >
-              A Development Firm
-              <span className="block italic" style={{ color: c.accent }}>Built on Purpose</span>
+              Purposeful. Precise.
+              <span className="block italic" style={{ color: c.accent }}>Future‑ready.</span>
             </h2>
 
             {/* Thin rule */}
-            <div className="mb-8" style={{ height: 1, background: `linear-gradient(to right, ${c.accent}, transparent)` }} />
+            <div className="mb-4" style={{ height: 1, background: `linear-gradient(to right, ${c.accent}, transparent)` }} />
 
             {/* Body copy */}
-            <p
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
-              className="mb-10"
-            >
-              At Amaan, development begins with intent. Every project is shaped through close collaboration with renowned architects and experienced construction contractors, ensuring each space is both refined in design and robust in execution.
-            </p>
+            <div className="space-y-2.5 mb-5">
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.6, color: c.textSecondary }}>
+                At Amaan India, development begins with clarity of intent.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.6, color: c.textSecondary }}>
+                Every project — residential, commercial or mixed‑use — is shaped through thoughtful design, disciplined execution and a commitment to long‑term value.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.6, color: c.textSecondary }}>
+                We partner with leading architects, engineers and construction specialists to craft environments that are refined in character, functional in purpose and built to endure with quiet confidence.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.85rem", lineHeight: 1.6, color: c.textSecondary }}>
+                Our approach ensures every development feels intentional, modern and enduring — today and for decades to come.
+              </p>
+            </div>
 
             {/* CTA */}
             <button
@@ -82,11 +105,11 @@ export function TrustSection() {
               style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
-                fontSize: "0.78rem",
+                fontSize: "0.7rem",
                 letterSpacing: "0.15em",
                 background: c.accent,
                 color: c.onAccent,
-                padding: "16px 32px",
+                padding: "10px 20px",
                 textTransform: "uppercase" as const,
                 transition: "all 0.4s",
                 border: "none",
@@ -101,6 +124,12 @@ export function TrustSection() {
 
           {/* ── Right: Pillars as editorial vertical stack ── */}
           <div className="flex flex-col lg:pt-12">
+            <h4
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.2em", color: c.accent }}
+              className="uppercase mb-5"
+            >
+              Our Core Principles
+            </h4>
             {/* Top rule */}
             <div className="h-px mb-3" style={{ background: c.borderSubtle }} />
 

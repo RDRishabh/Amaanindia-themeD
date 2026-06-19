@@ -379,7 +379,7 @@ export function ContactSection() {
                     style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.75rem", color: c.textMuted }}
                     className="text-center"
                   >
-                    By submitting, you agree to our Privacy Policy. We'll never spam you.
+                    We'll never spam you. Your details are safe with us.
                   </p>
                 </form>
               )}

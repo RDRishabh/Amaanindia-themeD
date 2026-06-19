@@ -5,6 +5,7 @@ import { getThemeColors } from "../../styles/themes";
 const quickLinks = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
+  { label: "Founder Letters", href: "#founder" },
   { label: "Our Approach", href: "#approach" },
   { label: "Our Projects", href: "#projects" },
   { label: "Blog", href: "#blog" },
@@ -51,7 +52,7 @@ export function Footer() {
                 <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.08rem", letterSpacing: "0.05em", color: c.textPrimary }}>
                   AMAAN
                 </div>
-                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.24em", color: c.accent }}>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 300, fontSize: "0.55rem", letterSpacing: "0.24em", color: c.textPrimary }}>
                   INDIA
                 </div>
               </div>
@@ -131,14 +132,22 @@ export function Footer() {
                   connect@amaanindia.com
                 </span>
               </a>
-              <div className="flex items-start gap-3">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=304,+DLF+Corporate+Park,+Sector+74A,+Gurugram,+HR+122004"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 group"
+              >
                 <MapPin size={15} className="mt-1 flex-shrink-0" style={{ color: c.accent }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.9rem", lineHeight: 1.6, color: c.textMuted }}>
+                <span 
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.9rem", lineHeight: 1.6, color: c.textMuted }}
+                  className="group-hover:text-[var(--t-text-primary)] transition-colors underline decoration-dotted decoration-1 underline-offset-4"
+                >
                   304, DLF Corporate Park,
                   <br />
                   Sector 74A, Gurugram, HR 122004
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -149,17 +158,15 @@ export function Footer() {
           <p
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }}
           >
-            © {new Date().getFullYear()} Amaan India. All rights reserved. | RERA Registered
+            © {new Date().getFullYear()} Amaan India. All rights reserved. | RERA Registered |{" "}
+            <a 
+              href="/cookie-policy" 
+              className="hover:text-[var(--t-accent)] transition-colors underline underline-offset-2"
+              style={{ color: c.textMuted }}
+            >
+              Cookie Policy
+            </a>
           </p>
-
-          <div className="flex items-center gap-6">
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">
-              Privacy Policy
-            </button>
-            <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.78rem", color: c.textMuted }} className="hover:text-[var(--t-accent)] transition-colors">
-              Terms of Use
-            </button>
-          </div>
 
           <button
             onClick={scrollTop}

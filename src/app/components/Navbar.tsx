@@ -9,6 +9,7 @@ const c = getThemeColors();
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Founder Letters", href: "#founder" },
   { label: "Approach", href: "#approach" },
   { label: "Projects", href: "#projects" },
   { label: "Gallery", href: "#gallery" },
@@ -20,6 +21,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
+
+  const isCookiePolicy = typeof window !== "undefined" && (window.location.pathname === "/cookie-policy" || window.location.pathname === "/cookie-policy/");
+  const isNavbarScrolled = scrolled || mobileOpen || isCookiePolicy;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +55,10 @@ export function Navbar() {
   const handleNav = (href: string) => {
     setMobileOpen(false);
     setActiveLink(href);
+    if (window.location.pathname === "/cookie-policy" || window.location.pathname === "/cookie-policy/") {
+      window.location.href = "/" + href;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -61,11 +69,11 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "backdrop-blur-xl" : ""}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isNavbarScrolled ? "backdrop-blur-xl" : ""}`}
         style={{
-          padding: scrolled ? "10px 0" : "18px 0",
-          background: scrolled ? c.navScrolledBg : "transparent",
-          boxShadow: scrolled ? c.navShadow : "none",
+          padding: isNavbarScrolled ? "10px 0" : "18px 0",
+          background: isNavbarScrolled ? c.navScrolledBg : "transparent",
+          boxShadow: isNavbarScrolled ? c.navShadow : "none",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -87,7 +95,7 @@ export function Navbar() {
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  filter: scrolled ? c.logoFilter : "brightness(0) invert(1)",
+                  filter: isNavbarScrolled ? c.logoFilter : "brightness(0) invert(1)",
                   transition: "filter 0.5s",
                 }}
               />
@@ -99,7 +107,7 @@ export function Navbar() {
                   fontWeight: 600,
                   fontSize: "1.05rem",
                   letterSpacing: "0.08em",
-                  color: scrolled ? c.textPrimary : "#fff",
+                  color: isNavbarScrolled ? c.textPrimary : "#fff",
                   lineHeight: 1,
                   transition: "color 0.5s",
                 }}
@@ -113,11 +121,12 @@ export function Navbar() {
                   fontWeight: 400,
                   fontSize: "0.52rem",
                   letterSpacing: "0.28em",
-                  color: scrolled ? c.accent : "rgba(201,164,74,0.85)",
+                  color: isNavbarScrolled ? c.textPrimary : "#fff",
                   textTransform: "uppercase",
                   lineHeight: 1,
                   transition: "color 0.5s",
                 }}
+                className="group-hover:text-[var(--t-accent)]"
               >
                 India
               </span>
@@ -128,8 +137,8 @@ export function Navbar() {
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => {
               const isActive = activeLink === link.href;
-              const activeColor = scrolled ? c.accent : "#C9A44A";
-              const inactiveColor = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)";
+              const activeColor = isNavbarScrolled ? c.accent : "#C9A44A";
+              const inactiveColor = isNavbarScrolled ? c.textSecondary : "rgba(255,255,255,0.80)";
               const linkColor = isActive ? activeColor : inactiveColor;
 
               return (
@@ -198,7 +207,7 @@ export function Navbar() {
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 500,
                   fontSize: "0.76rem",
-                  color: scrolled ? c.textSecondary : "rgba(255,255,255,0.75)",
+                  color: isNavbarScrolled ? c.textSecondary : "rgba(255,255,255,0.75)",
                   transition: "color 0.5s",
                   letterSpacing: "0.04em",
                 }}
@@ -228,17 +237,24 @@ export function Navbar() {
                 gap: 6,
               }}
             >
-              Book Consultation
+              Get In Touch
               <ChevronRight size={12} />
             </motion.button>
           </div>
 
           {/* ── Mobile toggle ── */}
           <motion.button
-            className="md:hidden text-white"
+            className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             whileTap={{ scale: 0.9 }}
-            style={{ background: "none", border: "none", cursor: "pointer", padding: 6 }}
+            style={{ 
+              background: "none", 
+              border: "none", 
+              cursor: "pointer", 
+              padding: 6,
+              color: isNavbarScrolled ? c.textPrimary : "#fff",
+              transition: "color 0.5s",
+            }}
           >
             <AnimatePresence mode="wait">
               {mobileOpen ? (
@@ -256,7 +272,7 @@ export function Navbar() {
 
         {/* Gold line below navbar when scrolled */}
         <motion.div
-          animate={{ scaleX: scrolled ? 1 : 0, opacity: scrolled ? 1 : 0 }}
+          animate={{ scaleX: isNavbarScrolled ? 1 : 0, opacity: isNavbarScrolled ? 1 : 0 }}
           transition={{ duration: 0.5 }}
           style={{
             height: 1,
@@ -297,7 +313,7 @@ export function Navbar() {
               />
             </motion.div>
 
-            <div className="flex flex-col items-center gap-6 relative z-10">
+            <div className="flex flex-col items-center gap-3.5 relative z-10">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.label}
@@ -308,8 +324,8 @@ export function Navbar() {
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 500,
-                    fontSize: "2rem",
-                    letterSpacing: "0.04em",
+                    fontSize: "1.1rem",
+                    letterSpacing: "0.06em",
                     color: c.textPrimary,
                     background: "none",
                     border: "none",
@@ -326,7 +342,7 @@ export function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="mt-6 flex flex-col items-center gap-3"
+                className="mt-4 flex flex-col items-center gap-3"
               >
                 <a
                   href="tel:+919000090000"
@@ -349,18 +365,18 @@ export function Navbar() {
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 600,
-                    fontSize: "0.75rem",
+                    fontSize: "0.72rem",
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     background: `linear-gradient(135deg, ${c.accent}, ${c.accentLight})`,
                     color: c.onAccent,
-                    padding: "13px 32px",
+                    padding: "10px 22px",
                     border: "none",
                     cursor: "pointer",
-                    marginTop: 4,
+                    marginTop: 2,
                   }}
                 >
-                  Book Consultation
+                  Get In Touch
                 </button>
               </motion.div>
             </div>

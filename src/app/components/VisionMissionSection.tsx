@@ -9,15 +9,15 @@ const c = getThemeColors();
 const identityBlocks = [
   {
     title: "Peace",
-    desc: "Calm, balanced environments that reduce visual noise and elevate everyday living.",
+    desc: "Calm, balanced environments that elevate everyday life.",
   },
   {
     title: "Assurance",
-    desc: "Refined construction and material integrity that create trust over the long term.",
+    desc: "Trusted quality, meticulous planning, and dependable execution.",
   },
   {
     title: "Quiet Confidence",
-    desc: "Understated luxury expressed through precision, restraint and purposeful design.",
+    desc: "Timeless design that speaks through substance, not excess.",
   },
 ];
 
@@ -86,13 +86,13 @@ export function VisionMissionSection() {
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
               className="mb-5"
             >
-              Amaan stands for peace, assurance and quiet confidence. In luxury living, it reflects homes designed with restraint, precision and enduring quality - spaces that feel calm, secure and timeless.
+              Amaan stands for peace, assurance, and quiet confidence. It reflects thoughtfully crafted spaces designed with precision, purpose, and enduring quality—places that feel calm, secure, and timeless.
             </p>
             <p
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "1rem", lineHeight: 1.85, color: c.textSecondary }}
               className="mb-8"
             >
-              At Amaan, luxury is understated. It is found in thoughtful architecture, refined construction and residences built to last.
+              At Amaan, luxury is understated. It is found in thoughtful design, refined execution, and developments created to deliver lasting value and meaningful experiences.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-3">

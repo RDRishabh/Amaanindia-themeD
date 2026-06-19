@@ -10,7 +10,7 @@ export function CTASection() {
   const c = getThemeColors();
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-32 overflow-hidden" id="founder">
       {/* Background */}
       <div className="absolute inset-0">
         <img
@@ -40,7 +40,7 @@ export function CTASection() {
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
                 className="uppercase"
               >
-                Founder's Note
+                Founder's Letter
               </span>
             </div>
 
@@ -64,9 +64,6 @@ export function CTASection() {
               </p>
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.88rem", letterSpacing: "0.05em", color: c.accent }}>
                 This commitment continues to shape everything we create.
-              </p>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, fontSize: "0.82rem", letterSpacing: "0.08em", color: c.textMuted }}>
-                — Founder, Amaan
               </p>
             </div>
 
