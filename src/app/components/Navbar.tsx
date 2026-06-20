@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Approach", href: "#approach" },
   { label: "Projects", href: "#projects" },
   { label: "Gallery", href: "#gallery" },
+  { label: "Customer Experience", href: "" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
@@ -20,12 +21,22 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("#home");
 
   const isCookiePolicy = typeof window !== "undefined" && (window.location.pathname === "/cookie-policy" || window.location.pathname === "/cookie-policy/");
-  const isNavbarScrolled = scrolled || mobileOpen || isCookiePolicy;
+  const isCustomerExperience = typeof window !== "undefined" && (window.location.pathname === "/customer-experience" || window.location.pathname === "/customer-experience/");
+  const isNavbarScrolled = scrolled || mobileOpen || isCookiePolicy || isCustomerExperience;
+
+  const [activeLink, setActiveLink] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (isCookiePolicy) return "";
+      if (isCustomerExperience) return "/customer-experience";
+    }
+    return "#home";
+  });
 
   useEffect(() => {
+    if (isCookiePolicy || isCustomerExperience) return;
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
 
@@ -33,6 +44,7 @@ export function Navbar() {
       let current = navLinks[0].href;
 
       navLinks.forEach((link) => {
+        if (!link.href.startsWith("#")) return;
         const section = document.querySelector<HTMLElement>(link.href);
         if (!section) return;
         if (anchor >= section.offsetTop) {
@@ -50,17 +62,34 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [isCookiePolicy, isCustomerExperience]);
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
     setActiveLink(href);
-    if (window.location.pathname === "/cookie-policy" || window.location.pathname === "/cookie-policy/") {
-      window.location.href = "/" + href;
+
+    const isSpecialPage = typeof window !== "undefined" && (
+      window.location.pathname === "/cookie-policy" ||
+      window.location.pathname === "/cookie-policy/" ||
+      window.location.pathname === "/customer-experience" ||
+      window.location.pathname === "/customer-experience/"
+    );
+
+    if (isSpecialPage) {
+      if (href.startsWith("#")) {
+        window.location.href = "/" + href;
+      } else {
+        window.location.href = href;
+      }
       return;
     }
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (
@@ -76,7 +105,7 @@ export function Navbar() {
           boxShadow: isNavbarScrolled ? c.navShadow : "none",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+        <div className="mx-auto px-6 md:px-10 flex items-center justify-between">
           {/* ── Logo ── */}
           <button
             onClick={() => handleNav("#home")}
@@ -134,7 +163,7 @@ export function Navbar() {
           </button>
 
           {/* ── Desktop links ── */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden nav-lg:flex items-center gap-7">
             {navLinks.map((link) => {
               const isActive = activeLink === link.href;
               const activeColor = isNavbarScrolled ? c.accent : "#C9A44A";
@@ -159,8 +188,8 @@ export function Navbar() {
                     color: linkColor,
                     transition: "color 0.5s",
                   }}
-                  onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textPrimary : "#fff"; }}
-                  onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = scrolled ? c.textSecondary : "rgba(255,255,255,0.80)"; }}
+                  onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = isNavbarScrolled ? c.textPrimary : "#fff"; }}
+                  onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = isNavbarScrolled ? c.textSecondary : "rgba(255,255,255,0.80)"; }}
                 >
                   {link.label}
                   {/* underline indicator */}
@@ -181,7 +210,7 @@ export function Navbar() {
           </nav>
 
           {/* ── Desktop CTA ── */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden nav-lg:flex items-center gap-5">
             <a
               href="tel:+919000090000"
               className="flex items-center gap-2 group"
@@ -191,7 +220,7 @@ export function Navbar() {
                 style={{
                   width: 28,
                   height: 28,
-                  border: `1px solid rgba(${c.accentRgb},0.4)`,
+                  border: `1px solid ${isNavbarScrolled ? `rgba(${c.accentRgb},0.4)` : "rgba(255,255,255,0.4)"}`,
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -200,7 +229,7 @@ export function Navbar() {
                 }}
                 className="group-hover:border-[var(--t-accent)] group-hover:bg-[var(--t-card-bg-subtle)]"
               >
-                <Phone size={12} style={{ color: c.accent }} />
+                <Phone size={12} style={{ color: isNavbarScrolled ? c.accent : "#fff" }} />
               </div>
               <span
                 style={{
@@ -244,13 +273,13 @@ export function Navbar() {
 
           {/* ── Mobile toggle ── */}
           <motion.button
-            className="md:hidden"
+            className="nav-lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             whileTap={{ scale: 0.9 }}
-            style={{ 
-              background: "none", 
-              border: "none", 
-              cursor: "pointer", 
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
               padding: 6,
               color: isNavbarScrolled ? c.textPrimary : "#fff",
               transition: "color 0.5s",

@@ -101,6 +101,20 @@ export default function App() {
     };
   }, [dashboardEnabled, isDashboardRoute]);
 
+  useEffect(() => {
+    if (isCookiePolicyRoute || isCustomerExperienceRoute || isDashboardRoute) return;
+    const hash = window.location.hash;
+    if (hash) {
+      const timer = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isCookiePolicyRoute, isCustomerExperienceRoute, isDashboardRoute]);
+
   if (dashboardEnabled && isDashboardRoute) {
     return <DashboardPage />;
   }

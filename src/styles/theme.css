@@ -13,12 +13,12 @@
   --secondary: var(--t-card-bg-subtle, #F2EFE9);
   --secondary-foreground: var(--t-text-primary, #1a1a1a);
   --muted: var(--t-card-bg-subtle, #F2EFE9);
-  --muted-foreground: var(--t-text-muted, rgba(26,26,26,0.42));
+  --muted-foreground: var(--t-text-muted, rgba(26, 26, 26, 0.42));
   --accent: var(--t-card-bg-subtle, #F2EFE9);
   --accent-foreground: var(--t-text-primary, #1a1a1a);
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: var(--t-border-subtle, rgba(26,26,26,0.09));
+  --border: var(--t-border-subtle, rgba(26, 26, 26, 0.09));
   --input: transparent;
   --input-background: var(--t-input-bg, #F2EFE9);
   --switch-background: #cbced4;
@@ -37,7 +37,7 @@
   --sidebar-primary-foreground: var(--t-on-accent, #ffffff);
   --sidebar-accent: var(--t-card-bg-subtle, #F2EFE9);
   --sidebar-accent-foreground: var(--t-text-primary, #1a1a1a);
-  --sidebar-border: var(--t-border-subtle, rgba(0,0,0,0.1));
+  --sidebar-border: var(--t-border-subtle, rgba(0, 0, 0, 0.1));
   --sidebar-ring: var(--t-accent, #1B2D4F);
 }
 
@@ -79,6 +79,7 @@
 }
 
 @theme inline {
+  --breakpoint-nav-lg: 1480px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
