@@ -204,7 +204,7 @@ export function ContactSection() {
             >
               <iframe
                 title="Amaan India Office Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.6!2d77.089!3d28.459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI3JzMyLjQiTiA3N8KwMDUnMjAuNCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.2882898715873!2d76.96963287612349!3d28.398813275780516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d5267683709%3A0x675841675711a14a!2sDLF%20Corporate%20Greens!5e0!3m2!1sen!2sin!4v1718870000000"
                 width="100%"
                 height="220"
                 style={{ border: 0, filter: c.mapFilter }}

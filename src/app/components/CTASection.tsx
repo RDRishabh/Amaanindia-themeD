@@ -84,7 +84,7 @@ export function CTASection() {
               <a
                 href="tel:+919000090000"
                 className="flex items-center gap-3 px-8 py-5 transition-all duration-400 backdrop-blur-sm group"
-                style={{ border: `1px solid rgba(255,255,255,0.30)`, color: "rgba(255,255,255,0.9)" }}
+                style={{ border: `1px solid ${c.borderMedium}`, color: c.textSecondary }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.borderColor = c.accent;
@@ -92,8 +92,8 @@ export function CTASection() {
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "rgba(255,255,255,0.30)";
-                  el.style.color = "rgba(255,255,255,0.9)";
+                  el.style.borderColor = c.borderMedium;
+                  el.style.color = c.textSecondary;
                 }}
               >
                 <Phone size={16} />
