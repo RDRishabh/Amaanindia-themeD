@@ -17,20 +17,20 @@ export function CookiePolicyPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div 
+      <div
         className="pt-32 pb-16 md:pt-40 md:pb-24 text-center px-6"
         style={{ background: c.sectionDark, borderBottom: `1px solid ${c.borderSubtle}` }}
       >
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <span 
+            <span
               style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", color: c.accent }}
               className="uppercase font-semibold"
             >
               Legal & Privacy
             </span>
           </div>
-          <h1 
+          <h1
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: c.textPrimary }}
             className="text-4xl md:text-5xl uppercase tracking-wider"
           >
@@ -41,94 +41,167 @@ export function CookiePolicyPage() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
-        <div 
+        <div
           className="p-8 md:p-12 shadow-sm rounded-sm"
           style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
         >
           <div className="space-y-8" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.95rem", lineHeight: 1.8, color: c.textSecondary }}>
-            
+
             <p>
-              This Cookie Policy sets out the basis on which <strong>Amaan India</strong>, which term includes all subsidiaries and affiliated entities ("Company", "we", "us", or "Amaan"), use cookies and similar tracking technologies on or in relation to our websites.
+              This Cookie Policy sets out the basis on which <strong>Amaan India</strong> which term includes all subsidiaries of Amaan India, ("Company", "we", "us", or "Amaan India") use cookies and similar technologies on or in relation to our websites.
             </p>
 
             <section className="space-y-4">
-              <h2 
+              <h2
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
                 className="pt-4"
               >
                 1. What are Cookies and Other Tracking Technologies?
               </h2>
+              <div className="space-y-4">
+                <p>
+                  <strong>Cookies:</strong> Cookies are small text files which a website may put on your computer or mobile device when you visit a site or page. The other tracking technologies work similarly to cookies and place small data files on your devices or monitor your website activity to enable us to collect information about how you use our Sites. This allows our Sites to recognise your device from those of other users of the Sites. Amaan India may use this data to analyse trends and statistics, use cookie data for re-targeting activities, and to help us provide a better customer service.
+                </p>
+                <p>
+                  <strong>Flash Cookies:</strong> Certain features of our Website may use local stored objects (or Flash cookies) to collect and store information about your preferences and navigation to, from and on our Website. Flash cookies are not managed by the same browser settings as are used for browser cookies.
+                </p>
+                <p>
+                  <strong>Web Beacons:</strong> Pages of the Website and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags and single-pixel gifs) that permit us, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of certain website content and verifying system and server integrity).
+                </p>
+              </div>
+            </section>
+
+            <section className="space-y-4">
+              <h2
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
+                className="pt-4"
+              >
+                2. What Information We Collect Using Cookies and Other Tracking Technologies?
+              </h2>
               <p>
-                <strong>Cookies:</strong> Cookies are small text files that a website may place on your computer or mobile device when you visit a site or page. The cookie helps the website, or another website, to recognize your device the next time you visit. 
+                We may collect information that does not directly reveal your specific identity or does not directly relate to you as an individual. We may automatically collect the following information when you use our service:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Your device, browsing actions and patterns collected automatically as you navigate through our websites.</li>
+                <li>Usage details, time of requests, browser types, operating system, IP addresses and information collected through cookies, web beacons and other tracking technologies.</li>
+                <li>Details of your visits to our Website, including traffic data, location data, logs and other communication data and the resources that you access and use on the Website.</li>
+                <li>Information about your computer and internet connection, operating system and browser type.</li>
+              </ul>
+            </section>
+
+            <section className="space-y-4">
+              <h2
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
+                className="pt-4"
+              >
+                3. How Do Our Sites Use Cookies and Other Tracking Technologies?
+              </h2>
+              <p>
+                Amaan India uses cookies and other tracking technologies across its websites to improve their performance and enhance your user experience. At times we may seek to place a cookie on your device (for instance, your computer’s browsers) which allows the server to recognise the device when it visits again, to track statistical information about navigation to and throughout certain areas of our website, and to display Amaan India promotions on other websites.
               </p>
               <p>
-                We use the term cookies in this policy to refer to all files that collect information in this way. There are many functions cookies serve. For example, they can help us to remember your username and preferences, analyze how well our website is performing, or even allow us to recommend content we believe will be most relevant to you.
+                The information that is tracked by such a cookie is used only for internal purposes, such as to improve website navigation and to measure the effectiveness of our promotional placements. For example, we keep track of the domains from which people visit and we also measure visitor activity on the website, but in a manner that would keep the information anonymous.
               </p>
             </section>
 
             <section className="space-y-4">
-              <h2 
+              <h2
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
                 className="pt-4"
               >
-                2. Types of Cookies We Use
+                4. Do We Use Any Cookies From Third-Party Companies?
               </h2>
               <p>
-                Generally, our cookies perform up to four different functions:
+                To administer our Sites and for research purposes, Amaan India also has contracted with third-party service providers to track and analyse statistical usage and volume information from our Site users. These third-party service providers use persistent Cookies to help us to improve the user experience, manage our Site content, and analyse how users navigate and utilize the Sites.
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h2
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
+                className="pt-4"
+              >
+                5. What Types of Cookies Are There, and Which Ones Are Used on the Site?
+              </h2>
+              <p>
+                Please click <a href="https://amaanindia.com/cookie-details/" className="underline font-medium" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">here</a> for information about cookies on our website.
+              </p>
+              <p>
+                We maintain the highest levels of confidentiality for this information. This anonymous information is used and analysed only at an aggregate level to help us understand trends and patterns. If you do not want your transaction details used in this manner, you can either disable your cookies by following the instructions set out in the “How to enable and disable cookies using your browser” section below. However, if you prefer not to accept cookies, you can set your browser to reject them or to alert you before one is placed.
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h2
+                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
+                className="pt-4"
+              >
+                6. How to Enable and Disable Cookies Using Your Browser
+              </h2>
+              <p>
+                There are several different ways in which you can accept or reject some or all cookies. Some of the main methods of doing so are described below.
+              </p>
+              <p>
+                You are welcome to block the use of some or all the cookies we use on our website. However, please be aware that doing so may impair our website and its functionality or may even render some or all of it unusable.
+              </p>
+              <p>
+                You should also be aware that clearing all cookies from your browser will also delete any cookies that are storing your preferences, for example, whether you have accepted cookies on a website or any cookies that are blocking other cookies.
+              </p>
+              <p>
+                The following links provide more information on cookie settings for commonly used browsers:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Essential Cookies:</strong> Some cookies are essential for the operation of our website. For example, some cookies allow us to identify subscribers and ensure they can access subscription-only pages. If a subscriber opts to disable these cookies, the user will not be able to access all of the content that a subscription entitles them to.
+                  <a href="http://windows.microsoft.com/en-GB/internet-explorer/delete-manage-cookies#ie=ie-10" className="underline" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">Cookie settings in Internet Explorer</a>
                 </li>
                 <li>
-                  <strong>Performance & Analytical Cookies:</strong> We utilize other cookies to analyze how our visitors use our websites and to monitor website performance. This allows us to provide a high-quality experience by customizing our offering and quickly identifying and fixing any issues that arise. For example, we might use performance cookies to keep track of which pages are most popular and which method of linking between pages is most effective.
+                  <a href="http://support.mozilla.com/en-US/kb/Cookies" className="underline" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">Cookie settings in Firefox</a>
                 </li>
                 <li>
-                  <strong>Functionality Cookies:</strong> We use functionality cookies to allow us to remember your preferences. For example, cookies save you the trouble of typing in your username every time you access the site, and recall your customization preferences.
+                  <a href="https://support.google.com/chrome/answer/95647?hl=en&ref_topic=14666" className="underline" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">Cookie settings in Chrome</a>
                 </li>
                 <li>
-                  <strong>Targeting & Remarketing Cookies:</strong> We and our third-party advertising partners use cookies to serve you with advertisements that we believe are relevant to you and your interests. These cookies track your browsing habits across different websites and enable remarketing campaigns so we can tailor promotional messages to you on platforms like Google, Meta, and others.
+                  <a href="https://support.apple.com/kb/PH17191?locale=en_US" className="underline" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">Cookie settings in Safari web</a>
+                </li>
+                <li>
+                  <a href="http://support.apple.com/kb/HT1677" className="underline" style={{ color: c.accent }} target="_blank" rel="noopener noreferrer">Cookie settings in iOS (Safari Mobile)</a>
                 </li>
               </ul>
             </section>
 
             <section className="space-y-4">
-              <h2 
+              <h2
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
                 className="pt-4"
               >
-                3. How to Manage or Block Cookies
+                7. Updates on Policy
               </h2>
               <p>
-                If you do not want to accept cookies, you can change your browser settings so that cookies are not accepted. If you do this, please be aware that you may lose some of the functionality of this website.
-              </p>
-              <p>
-                To opt out of being tracked by Google Analytics across all websites, you can visit the Google Analytics Opt-out Browser Add-on. For remarketing preferences, you can adjust settings directly on third-party platforms (such as Facebook Ad Preferences or Google Ad Settings).
+                This policy may change from time to time. Your continued use of our platforms after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.
               </p>
             </section>
 
             <section className="space-y-4">
-              <h2 
+              <h2
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
                 className="pt-4"
               >
-                4. Updates to this Policy
+                8. How Do You Contact Us?
               </h2>
               <p>
-                We may update this Cookie Policy from time to time in order to reflect changes to the cookies we use or for other operational, legal, or regulatory reasons. Please therefore re-visit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.
+                In case of any queries related to this policy, you can contact our Data Privacy Office in one of the following ways:
               </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 
-                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.25rem", color: c.textPrimary }}
-                className="pt-4"
-              >
-                5. Contact Us
-              </h2>
-              <p>
-                If you have any questions about our use of cookies or other tracking technologies, please email us at <a href="mailto:connect@amaanindia.com" className="underline" style={{ color: c.accent }}>connect@amaanindia.com</a> or call us at <a href="tel:+919000090000" className="underline" style={{ color: c.accent }}>+91 9000090000</a>.
-              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Email us at <a href="mailto:customer.privacy@amaanindia.com" className="underline font-medium" style={{ color: c.accent }}>customer.privacy@amaanindia.com</a>
+                </li>
+                <li>
+                  Call us at <a href="tel:+919000090000" className="underline font-medium" style={{ color: c.accent }}>+91 90000 90000</a>
+                </li>
+                <li>
+                  Send us a communication to: <em>Data Privacy Office, Amaan India Properties, New Delhi, India</em>
+                </li>
+              </ul>
             </section>
 
           </div>

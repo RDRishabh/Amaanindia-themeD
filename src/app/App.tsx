@@ -20,6 +20,9 @@ import { CookieBanner } from "./components/CookieBanner";
 import { FloatingActions } from "./components/FloatingActions";
 import { CookiePolicyPage } from "./components/CookiePolicyPage";
 import { AssistancePopup } from "./components/AssistancePopup";
+import { CustomerExperiencePage } from "./components/CustomerExperiencePage";
+import { HighlightsSection } from "./components/HighlightsSection";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,9 +32,10 @@ export default function App() {
   const dashboardEnabled = import.meta.env.VITE_ENABLE_DASHBOARD === "true";
   const isDashboardRoute = hasWindow && globalThis.window.location.pathname.startsWith("/dashboard");
   const isCookiePolicyRoute = hasWindow && (globalThis.window.location.pathname === "/cookie-policy" || globalThis.window.location.pathname === "/cookie-policy/");
+  const isCustomerExperienceRoute = hasWindow && (globalThis.window.location.pathname === "/customer-experience" || globalThis.window.location.pathname === "/customer-experience/");
 
   useEffect(() => {
-    if ((dashboardEnabled && isDashboardRoute) || isCookiePolicyRoute || !appRef.current) return;
+    if ((dashboardEnabled && isDashboardRoute) || isCookiePolicyRoute || isCustomerExperienceRoute || !appRef.current) return;
 
     const ctx = gsap.context(() => {
       const sections = gsap.utils.toArray<HTMLElement>("[data-scroll-section]");
@@ -105,6 +109,10 @@ export default function App() {
     return <CookiePolicyPage />;
   }
 
+  if (isCustomerExperienceRoute) {
+    return <CustomerExperiencePage />;
+  }
+
   return (
     <div
       ref={appRef}
@@ -119,6 +127,11 @@ export default function App() {
       <div data-scroll-section>
         <div data-scroll-content>
           <VisionMissionSection />
+        </div>
+      </div>
+      <div data-scroll-section>
+        <div data-scroll-content>
+          <HighlightsSection />
         </div>
       </div>
       <div data-scroll-section>
