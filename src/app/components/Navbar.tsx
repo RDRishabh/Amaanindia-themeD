@@ -9,7 +9,7 @@ const c = getThemeColors();
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Founder Letters", href: "#founder" },
+  { label: "Founder's Letter", href: "#founder" },
   { label: "Approach", href: "#approach" },
   { label: "Projects", href: "#projects" },
   { label: "Gallery", href: "#gallery" },
