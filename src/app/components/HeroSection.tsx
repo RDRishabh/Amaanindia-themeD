@@ -253,6 +253,16 @@ export function HeroSection() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Slide auto-advance
   useEffect(() => {
@@ -318,7 +328,10 @@ export function HeroSection() {
       id="home"
       ref={heroRef}
       className="relative overflow-hidden"
-      style={{ height: "100svh", minHeight: 680 }}
+      style={{
+        height: isMobile ? "auto" : "100svh",
+        minHeight: isMobile ? "100svh" : 680,
+      }}
       onMouseMove={handleMouseMove}
     >
       {/* ── Background slides ── */}
@@ -372,9 +385,15 @@ export function HeroSection() {
       />
 
       {/* ── Main layout ── */}
-      <div className="relative z-10 h-full flex flex-col">
+      <div
+        className="relative z-10 flex flex-col justify-between"
+        style={{
+          minHeight: isMobile ? "100svh" : "100%",
+          height: isMobile ? "auto" : "100%",
+        }}
+      >
         {/* Content row – flex-1 keeps this from pushing bottom bar */}
-        <div className="flex-1 flex items-center px-6 sm:px-10 md:px-14 pt-20">
+        <div className="flex-1 flex items-center px-6 sm:px-10 md:px-14 pt-20 pb-8 sm:pb-12">
           {/* Left panel */}
           <div className="w-full lg:w-[56%] flex flex-col" style={{ gap: "1.4rem" }}>
             {/* Overline */}
@@ -569,9 +588,9 @@ export function HeroSection() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="px-6 sm:px-10 md:px-14 pb-7 pt-4 flex items-end justify-between">
+        <div className="px-6 sm:px-10 md:px-14 pb-7 pt-4 flex flex-row items-end justify-between gap-4">
           {/* Stats */}
-          <div className="flex flex-wrap gap-6 md:gap-10">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-x-4 gap-y-3 md:gap-10">
             {stats.map((stat) => {
               const Icon = stat.icon;
               return (

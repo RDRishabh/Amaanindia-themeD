@@ -73,14 +73,14 @@ export function GallerySection() {
         </motion.div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4" style={{ gridAutoRows: "220px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ gridAutoRows: "220px" }}>
           {galleryImages.map((img, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`relative group cursor-pointer overflow-hidden ${img.tall ? "row-span-2" : "row-span-1"}`}
+              className={`relative group cursor-pointer overflow-hidden ${img.tall ? "md:row-span-2" : "md:row-span-1"}`}
               onClick={() => setLightbox(i)}
             >
               <img

@@ -38,56 +38,95 @@ export default function App() {
     if ((dashboardEnabled && isDashboardRoute) || isCookiePolicyRoute || isCustomerExperienceRoute || !appRef.current) return;
 
     const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
       const sections = gsap.utils.toArray<HTMLElement>("[data-scroll-section]");
 
-      sections.forEach((section) => {
-        const content = section.querySelector<HTMLElement>("[data-scroll-content]");
+      // Mobile viewport animations: keep background static, only animate content text
+      mm.add("(max-width: 1023px)", () => {
+        sections.forEach((section) => {
+          const content = section.querySelector<HTMLElement>("[data-scroll-content]");
+          if (!content) return;
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 88%",
-            end: "top 35%",
-            scrub: 1,
-          },
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 92%",
+              end: "top 40%",
+              scrub: 1,
+            },
+          });
+
+          const textElements = content.querySelectorAll("h1, h2, h3, h4, p, li, button, .hero-stat");
+          if (textElements.length > 0) {
+            tl.fromTo(
+              textElements,
+              {
+                autoAlpha: 0,
+                y: 20,
+              },
+              {
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.05,
+                ease: "power2.out",
+              }
+            );
+          }
         });
+      });
 
-        tl.fromTo(
-          section,
-          {
-            autoAlpha: 0,
-            y: 64,
-            scale: 0.985,
-            transformPerspective: 900,
-            rotationX: 3,
-            transformOrigin: "50% 80%",
-          },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            rotationX: 0,
-            ease: "power2.out",
-          },
-        );
+      // Desktop viewport animations: full section scaling, tilting, and fading
+      mm.add("(min-width: 1024px)", () => {
+        sections.forEach((section) => {
+          const content = section.querySelector<HTMLElement>("[data-scroll-content]");
 
-        if (content) {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 88%",
+              end: "top 35%",
+              scrub: 1,
+            },
+          });
+
           tl.fromTo(
-            content,
+            section,
             {
-              autoAlpha: 0.82,
-              y: 24,
+              autoAlpha: 0,
+              y: 64,
+              scale: 0.985,
+              transformPerspective: 900,
+              rotationX: 3,
+              transformOrigin: "50% 80%",
             },
             {
               autoAlpha: 1,
               y: 0,
+              scale: 1,
+              rotationX: 0,
               ease: "power2.out",
-            },
-            0,
+            }
           );
-        }
+
+          if (content) {
+            tl.fromTo(
+              content,
+              {
+                autoAlpha: 0.82,
+                y: 24,
+              },
+              {
+                autoAlpha: 1,
+                y: 0,
+                ease: "power2.out",
+              },
+              0
+            );
+          }
+        });
       });
 
+      // Intro text animation on load
       gsap.from(".app-intro", {
         autoAlpha: 0,
         y: 22,

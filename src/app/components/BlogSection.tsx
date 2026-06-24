@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { CalendarDays, PenLine, UserRound, X } from "lucide-react";
+import { CalendarDays, BookOpen, UserRound, X } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 import { fetchBlogs, type Blog } from "../lib/api";
 
@@ -205,7 +205,7 @@ export function BlogSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.55, delay: idx * 0.08 }}
-                  className="relative p-8 group text-left"
+                  className="relative p-8 group text-left transition-all duration-400 hover:shadow-2xl hover:-translate-y-1.5 hover:!border-[var(--t-accent)]"
                   style={{ background: c.cardBg, border: `1px solid ${c.borderSubtle}` }}
                   onClick={() => setActiveBlog(blog)}
                 >
@@ -215,10 +215,14 @@ export function BlogSection() {
                   />
 
                   <div
-                    className="w-11 h-11 flex items-center justify-center mb-5"
-                    style={{ background: c.cardBgSubtle }}
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-5 transition-all duration-350"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(${c.accentRgb}, 0.12) 0%, rgba(${c.accentRgb}, 0.03) 100%)`,
+                      border: `1px solid rgba(${c.accentRgb}, 0.28)`,
+                      boxShadow: `0 4px 10px rgba(${c.accentRgb}, 0.06)`,
+                    }}
                   >
-                    <PenLine size={18} style={{ color: c.accent }} />
+                    <BookOpen size={18} style={{ color: c.accent }} className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                   </div>
 
                   <div className="flex items-center gap-3 mb-3">
@@ -235,7 +239,7 @@ export function BlogSection() {
 
                   <h3
                     style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "1.1rem", lineHeight: 1.35, color: c.textPrimary }}
-                    className="mb-3"
+                    className="mb-3 transition-colors duration-300 group-hover:text-[var(--t-accent)]"
                   >
                     {blog.title}
                   </h3>
@@ -252,9 +256,9 @@ export function BlogSection() {
                       letterSpacing: "0.14em",
                       color: c.accent,
                     }}
-                    className="uppercase inline-block mt-5"
+                    className="uppercase inline-flex items-center gap-1 mt-5 transition-transform duration-300 group-hover:translate-x-1"
                   >
-                    Read Full Article
+                    Read Full Article &rarr;
                   </span>
                 </motion.button>
               ))}

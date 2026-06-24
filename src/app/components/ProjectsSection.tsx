@@ -232,40 +232,7 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <button
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 600,
-              fontSize: "0.78rem",
-              letterSpacing: "0.15em",
-              border: `2px solid ${c.textPrimary}`,
-              color: c.textPrimary,
-              background: "transparent",
-              padding: "16px 40px",
-              textTransform: "uppercase" as const,
-              cursor: "pointer",
-              transition: "all 0.4s",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = c.textPrimary;
-              el.style.color = c.sectionWhite;
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = "transparent";
-              el.style.color = c.textPrimary;
-            }}
-          >
-            View All Projects
-          </button>
-        </motion.div>
+
       </div>
     </section>
   );

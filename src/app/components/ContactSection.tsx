@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef, useState } from "react";
-import { Phone, Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, Send, CheckCircle } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
 import { submitContact } from "../lib/api";
+import whatsappImg from "../../assets/whatsapp.svg";
 
 export function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -191,7 +192,7 @@ export function ContactSection() {
               rel="noreferrer"
               className="flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-6 py-4 transition-all duration-300 group self-start"
             >
-              <MessageCircle size={20} />
+              <img src={whatsappImg} alt="WhatsApp" className="w-5 h-5 object-contain filter brightness-0 invert" />
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.8rem", letterSpacing: "0.1em" }} className="uppercase">
                 Chat on WhatsApp
               </span>

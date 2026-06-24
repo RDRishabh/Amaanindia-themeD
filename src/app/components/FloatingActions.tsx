@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUp, MessageCircle } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { getThemeColors } from "../../styles/themes";
+import whatsappImg from "../../assets/whatsapp.svg";
 
 export function FloatingActions() {
   const [showScroll, setShowScroll] = useState(false);
@@ -63,7 +64,7 @@ export function FloatingActions() {
         rel="noopener noreferrer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-lg cursor-pointer transition-shadow duration-300"
+        className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-shadow duration-300"
         style={{
           boxShadow: "0 4px 14px rgba(37, 211, 102, 0.45)",
         }}
@@ -75,7 +76,7 @@ export function FloatingActions() {
         }}
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle size={22} className="stroke-[2.5]" />
+        <img src={whatsappImg} alt="WhatsApp" className="w-12 h-12 object-contain" />
       </motion.a>
     </div>
   );
