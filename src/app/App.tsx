@@ -25,10 +25,40 @@ import { HighlightsSection } from "./components/HighlightsSection";
 
 
 gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  ScrollTrigger.clearScrollMemory();
+}
 
 export default function App() {
   const appRef = useRef<HTMLDivElement>(null);
   const hasWindow = typeof globalThis.window !== "undefined";
+
+  useEffect(() => {
+    if (hasWindow) {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      ScrollTrigger.clearScrollMemory();
+      window.scrollTo(0, 0);
+
+      const handleScrollRestoration = () => {
+        window.scrollTo(0, 0);
+        ScrollTrigger.refresh();
+      };
+
+      window.addEventListener("load", handleScrollRestoration);
+
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+        ScrollTrigger.refresh();
+      }, 100);
+
+      return () => {
+        window.removeEventListener("load", handleScrollRestoration);
+        clearTimeout(timer);
+      };
+    }
+  }, [hasWindow]);
   const dashboardEnabled = import.meta.env.VITE_ENABLE_DASHBOARD === "true";
   const isDashboardRoute = hasWindow && globalThis.window.location.pathname.startsWith("/dashboard");
   const isCookiePolicyRoute = hasWindow && (globalThis.window.location.pathname === "/cookie-policy" || globalThis.window.location.pathname === "/cookie-policy/");
@@ -133,6 +163,11 @@ export default function App() {
         duration: 0.9,
         ease: "power3.out",
       });
+
+      // Refresh ScrollTrigger after a tiny timeout to ensure correct dimensions
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200);
     }, appRef);
 
     return () => {
