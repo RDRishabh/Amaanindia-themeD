@@ -7,7 +7,7 @@ import { getThemeColors } from "../../styles/themes";
 const highlights = [
   {
     icon: MapPin,
-    title: "Prime Location",
+    title: "Prime Locations",
     desc: "Properties situated in high-growth corridors with excellent proximity, seamless connectivity, and robust infrastructure development.",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop",
   },

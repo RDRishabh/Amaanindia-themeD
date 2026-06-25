@@ -21,7 +21,7 @@ export function TestimonialsSection() {
   const next = () => setCurrent((s) => (s + 1) % testimonials.length);
 
   return (
-    <section className="py-28 relative overflow-hidden" style={{ background: c.sectionDark }}>
+    <section id="customer-experience" className="py-28 relative overflow-hidden" style={{ background: c.sectionDark }}>
       {/* Background element */}
       <div
         style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "18rem", lineHeight: 1, letterSpacing: "-0.05em" }}
@@ -45,7 +45,7 @@ export function TestimonialsSection() {
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, fontSize: "0.7rem", letterSpacing: "0.25em", color: c.accent }}
               className="uppercase"
             >
-              Client Stories
+              Customer Experience
             </span>
             <div className="h-px w-10" style={{ background: c.accent }} />
           </div>
